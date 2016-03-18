@@ -1,8 +1,18 @@
+/* 
+*  Lab functions by Vasile Sebastian Costinel.
+*  To test this use test() statement.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include "bridge.h"
 #include <time.h>
+#include <windows.h>
+
+void test() {
+	printf("Test Solved 1 ! \n");
+}
 
 int mergeSort(int* a, int len) {
 	int step = 1;
@@ -47,10 +57,6 @@ int merge(int *a, int s1, int e1, int s2, int e2, int* m1, int* m2) {
 		a[p++] = m2[p2++];
 	}
 	return 0;
-}
-
-void test() {
-	printf("Test Solved! \n");
 }
 
 void createArray(int *a, int n) {
