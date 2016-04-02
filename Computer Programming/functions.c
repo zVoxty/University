@@ -1,142 +1,455 @@
-/* 
-*  Lab functions by Vasile Sebastian Costinel.
-*  To test this use test() statement.
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
-#include "bridge.h"
-#include <time.h>
 #include <windows.h>
+#include "bridge.h"
+#include <stdbool.h>
 
-void test() {
-	printf("Test Solved 1 ! \n");
-}
+/*--------------------------------------*/
+/*XXXXXXXXX>> Writed By Voxty <<XXXXXXXX*/
+/*--------------------------------------*/
 
-int mergeSort(int* a, int len) {
-	int step = 1;
-	int *m1 = (int *)malloc(len*sizeof(int));
-	if (!m1) return -1;
-	int *m2 = (int *)malloc(len*sizeof(int));
-	if (!m2) return -1;
-	while (step < len) {
-		int i, s1, e1, s2, e2;
-		for (i = 0; (i + step - 1) < (len - 1); i += 2 * step) {
-			s1 = i;
-			e1 = i + step - 1;
-			s2 = e1 + 1;
-			(i + 2 * step - 1) < (len - 1) ? (e2 = i + 2 * step - 1) : (e2 = len - 1);
-			merge(a, s1, e1, s2, e2, m1, m2);
+/* A HOLE LIB OF << STACK AND QUE FUNCTIONS >> */
+
+int show_list(stk *head) {
+	int iterator = 0;
+	if (head->next != NULL) {
+		printf("List is : ");
+		stk *curent = head;
+		while (curent->next != NULL) {
+			iterator++;
+			curent = curent->next;
+			printf("%d ", curent->data);
 		}
-		step = step << 1;
+		printf("and there are %d numbers", iterator);
+		printf("\n");
+		Sleep(2000);
+		return iterator;
 	}
-	return 0;
+	else {
+		printf(" There are no values !!! \n");
+		Sleep(2000);
+	}
 }
 
-int merge(int *a, int s1, int e1, int s2, int e2, int* m1, int* m2) {
-	int len1 = e1 - s1 + 1;
-	int len2 = e2 - s2 + 1;
-	int p1 = 0;
-	int p2 = 0;
-	int p = s1;
-	memcpy(m1, a + s1, sizeof(int)*len1);
-	memcpy(m2, a + s2, sizeof(int)*len2);
-	while (p1<len1 && p2<len2) {
-		if (m1[p1] < m2[p2]) {
-			a[p++] = m1[p1++];
+void STACKS_AND_QUE(){
+	stk *head;
+	head = (stk*)malloc(sizeof(stk));
+	head->next = NULL;
+
+	int option = 1;
+	int chose;
+
+	while (option) {
+		system("CLS");
+
+		printf("          STACKS & QUEUE \n");
+		printf("---------------------------------------\n");
+		printf("	1. STACKS \n");
+		printf("	2. QUEUE \n");
+		printf("	3. EXIT \n");
+		printf("	Insert your choice : \n");
+		scanf("%d", &chose);
+
+		switch (chose) {
+		case 1:
+			STACKS(head);
+		case 2:
+			COADA(head);
+		case 3:
+			option = 0;
+		default:
+			printf(" Wrong choice ! ");
+			Sleep(2000);
+			break;
+		}
+	}
+}
+
+bool check_is_sorted(stk *head) {
+	stk *current = head;
+	int ok = 0;
+	if (head->next == NULL) {
+		printf("List is empty ! \n");
+		Sleep(2000);
+	}
+	else {
+		while (current->next != NULL) {
+			if (current->data < current->next->data) {
+				current = current->next;
+				if (current->next == NULL) {
+					printf("List is sorted ! \n");
+					Sleep(2000);
+					return true;
+				}
+			}
+			else {
+				printf("List is not sorted ! \n");
+				Sleep(2000);
+				return false;
+			}
+		}	
+	}
+}
+
+int get_max(stk *head) {    
+	stk *current = head->next;
+	int temp = 0;
+	while (current->next != NULL) {
+		if (current->data > temp) {
+			temp = current->data;
+		}
+		current = current->next;
+	}
+	printf("Maxim number in array is : %d \n", temp);
+	Sleep(2000);
+	return temp;
+} 
+
+int get_min(stk *head) {
+	stk *current = head->next;
+	int temp = 1000000;
+	while (current->next != NULL) {
+		if (temp > current->data) {
+			temp = current->data;
+		}
+		current = current->next;
+	}
+	printf("Min element is %d !\n", temp);
+	Sleep(2000);
+	return temp;
+}
+
+void binary_search(stk *head) {
+	int val;
+	int i = 0;
+	stk *current = head;
+
+	printf("What do you want to find : \n");
+	scanf("%d", &val);
+
+	while (current->next != NULL) {
+		if (current->data != val) {
+			current = current->next;
+			i++;
 		}
 		else {
-			a[p++] = m2[p2++];
+			printf("Value of %d have position %d !", current->data, i);
+			Sleep(3000);
+			break;
 		}
 	}
-	while (p1<len1) {
-		a[p++] = m1[p1++];
+
+}
+
+void push_back(stk *head) {
+	int value;
+	do {
+		printf("Insert value (0 = back to main): ");
+		scanf("%d", &value);
+		if (value != 0) {
+			stk *current = head;
+
+			stk *new_value;
+			new_value = (stk*)malloc(sizeof(stk));
+
+			while (current->next != NULL) {
+				current = current->next;
+			}
+			current->next = new_value;
+			new_value->data = value;
+			new_value->next = NULL;
+		}
+	} while (value != 0);
+}
+
+void pop_first(stk *head) {
+	if (head->next == NULL) {
+		printf(" List is empty ! \n");
+		Sleep(2000);
 	}
-	while (p2<len2) {
-		a[p++] = m2[p2++];
+	else {
+		stk *val;
+		stk *leg;
+		val = head->next;
+		leg = val->next;
+		printf(" Value of %d was been deleted !", val->data);
+		Sleep(2000);
+		free(val);
+		head->next = leg;
 	}
+}
+
+void pop_back(stk *head) {
+	if (head->next == NULL) {
+		printf("List is Empty ! \n");
+		Sleep(2000);
+	}
+	else {
+		stk *curent = head;
+		stk *val_del;
+		while (curent->next->next != NULL) {
+			curent = curent->next;
+		}
+		val_del = curent->next;
+		printf("Value of %d was been deleted !", val_del->data);
+		Sleep(2000);
+		free(val_del);
+		curent->next = NULL;
+	}
+	
+}
+
+void STACKS(stk *head) {
+
+	int option = 1;
+	int chose;
+
+	while (option) {
+		system("CLS");
+
+		printf("             STACKS\n");
+		printf("--------------------------------\n");
+		printf("	1. PUSH \n");
+		printf("	2. POP\n");
+		printf("	3. SHOW MAX\n");
+		printf("	4. SHOW MIN\n");
+		printf("	5. SHOW\n");
+		printf("	6. BACK TO MAIN\n");
+		printf("	Insert you choice : ");
+		scanf("%d", &chose);
+
+		switch (chose) {
+		case 1:
+			push_back(head);
+			break;
+		case 2:
+			pop_back(head);
+			break;
+		case 3:
+			get_max(head);
+			break;
+		case 4:
+			get_min(head);
+			break;
+		case 5:
+			show_list(head);
+			break;
+		case 6:
+			main();
+		default:
+			printf("Wrong choice ! \n");
+			Sleep(2000);
+			break;
+		}
+	}
+}
+
+void COADA(stk *head) {
+	int option = 1;
+	int chose;
+
+	while (option) {
+		system("CLS");
+
+		printf("             QUE\n");
+		printf("--------------------------------\n");
+		printf("	1. PUSH \n");
+		printf("	2. POP\n");
+		printf("	3. SHOW MAX\n");
+		printf("	4. SHOW MAX\n");
+		printf("	5. SHOW\n");
+		printf("	6. BACK TO MAIN\n");
+		printf("	Insert you choice : ");
+		scanf("%d", &chose);
+
+		switch (chose) {
+		case 1:
+			push_back(head);
+			break;
+		case 2:
+			pop_first(head);
+			break;
+		case 3:
+			get_max(head);
+			break;
+		case 4:
+			get_min(head);
+			break;
+		case 5:
+			show_list(head);
+			break;
+		case 6:
+			main();
+		default:
+			printf("Wrong choice ! \n");
+			Sleep(2000);
+			break;
+		}
+	}
+}
+
+/* END OF << STACK AND QUE FUNCTIONS >> */
+
+/*--------------------------------------*/
+/*XXXXXXXXX>> Writed By Voxty <<XXXXXXXX*/
+/*--------------------------------------*/
+
+/* STORT FUNCTIONS */
+
+void selectionSort(int *a, int n) {
+	int i, j;
+
+	for (i = 0; i < n; ++i) {
+		int min = i;
+		for (j = i + 1; j < n; ++j) {
+			if (a[j] < a[min]) {
+				min = j;
+			}
+		}
+		swap(&i, &min);
+	}
+}
+
+void heapify(int *a, int n, int i)
+{
+	int largest = i;  // Initialize largest as root
+	int l = 2 * i + 1;  // left = 2*i + 1
+	int r = 2 * i + 2;  // right = 2*i + 2
+
+						// If left child is larger than root
+	if (l < n && a[l] > a[largest])
+		largest = l;
+
+	// If right child is larger than largest so far
+	if (r < n && a[r] > a[largest])
+		largest = r;
+
+	// If largest is not root
+	if (largest != i)
+	{
+		swap(&a[i], &a[largest]);
+
+		// Recursively heapify the affected sub-tree
+		heapify(a, n, largest);
+	}
+}
+
+void heapSort(int *a, int n)
+{
+	// Build heap (rearrange array)
+	for (int i = n / 2 - 1; i >= 0; i--)
+		heapify(a, n, i);
+
+	// One by one extract an element from heap
+	for (int i = n - 1; i >= 0; i--)
+	{
+		// Move current root to end
+		swap(&a[0], &a[i]);
+
+		// call max heapify on the reduced heap
+		heapify(a, i, 0);
+	}
+}
+
+void Merge(int *A, int *L, int leftSize, int *R, int rightSize) {
+	int i, j, k;
+
+	i = 0; j = 0; k = 0;
+
+	while (i<leftSize && j< rightSize) {
+		if (L[i]  < R[j]) A[k++] = L[i++];
+		else A[k++] = R[j++];
+	}
+	while (i < leftSize) A[k++] = L[i++];
+	while (j < rightSize) A[k++] = R[j++];
+}
+
+void mergeSort(int *A, int size) {
+	int i, mid, *L, *R;
+	if (size < 2) return;
+
+	mid = size / 2;
+
+	L = (int*)malloc(mid*sizeof(int));
+	R = (int*)malloc((size - mid)*sizeof(int));
+
+	for (i = 0; i<mid; i++) L[i] = A[i];
+	for (i = mid; i<size; i++) R[i - mid] = A[i];
+
+	mergeSort(L, mid);
+	mergeSort(R, size - mid);
+	Merge(A, L, mid, R, size - mid);
+	free(L);
+	free(R);
+}
+
+int quicksort(int*a, int len) {
+	quicksort_r(a, 0, len);
 	return 0;
 }
 
+int quicksort_r(int* a, int start, int end) {
+	if (start >= end) {
+		return 0;
+	}
+	int pivot = a[end];
+	int swp;
+	//set a pointer to divide array into two parts
+	//one part is smaller than pivot and another larger
+	int pointer = start;
+	int i;
+	for (i = start; i<end; i++) {
+		if (a[i]<pivot) {
+			if (pointer != i) {
+				//swap a[i] with a[pointer]
+				//a[pointer] behind larger than pivot
+				swp = a[i];
+				a[i] = a[pointer];
+				a[pointer] = swp;
+			}
+			pointer++;
+		}
+	}
+	//swap back pivot to proper position
+	swp = a[end];
+	a[end] = a[pointer];
+	a[pointer] = swp;
+	quicksort_r(a, start, pointer - 1);
+	quicksort_r(a, pointer + 1, end);
+	return 0;
+}
+
+/* END OF STORT FUNCTIONS */
+
+/*--------------------------------------*/
+/*XXXXXXXXX>> Writed By Voxty <<XXXXXXXX*/
+/*--------------------------------------*/
+
+/* SIMPLE FUNCTIONS*/
+
+/* Function which create an array */
 void createArray(int *a, int n) {
-	for (int i = 0; i < n; i++) {
+	int i;
+	printf("Insert %d elements in array : ", n);
+	for (i = 1; i <= n; i++) {
 		scanf("%d", &a[i]);
 	}
 }
 
+/* Function which print an array */
 void printArray(int *a, int n) {
-	for (int i = 0; i < n; i++) {
+	int i;
+	printf("Your array have %d elements and here are : \n", n);
+	for (i = 1; i <= n; i++) {
 		printf("%d ", a[i]);
 	}
-	printf("\n");
 }
 
-bool isSorted(int *a, int n) {
-	for (int i = 0; i < n; i++) {
-		if (a[i] < a[i - 1]) {
-			return false;
-		}
-	}
-	return true;
+/* Function which swap two elements !*/
+void swap(int *a,int  *b) {
+	int temp = *a;
+	*a = *b;
+	*b = temp;
 }
 
-void insertionSort(int *a, int n) {
-	for (int i = 1; i < n; ++i)
-	{
-		for (int j = i; j > 0 && a[j] < a[j - 1]; --j)
-		{
-			swap(a, j, j - 1);
-		}
-	}
-}
-
-void selectionSort(int *a, int n) {
-	for (int i = 0; i < n; ++i)
-	{
-		int min = i;
-		for (int j = i + 1; j < n; ++j)
-		{
-			if (a[j] < a[min])
-			{
-				min = j;
-			}
-		}
-		swap(a, i, min);
-	}
-}
-
-int quicksort(int*a, int len){
-    quicksort_r(a,0,len-1);
-    return 0;
-}
-int quicksort_r(int* a,int start,int end){
-    if (start>=end) {
-        return 0;
-    }
-    int pivot=a[end];
-    int swp;
-    //set a pointer to divide array into two parts
-    //one part is smaller than pivot and another larger
-    int pointer=start;
-    int i;
-    for (i=start; i<end; i++) {
-        if (a[i]<pivot) {
-            if (pointer!=i) {
-                //swap a[i] with a[pointer]
-                //a[pointer] behind larger than pivot
-                swp=a[i];
-                a[i]=a[pointer];
-                a[pointer]=swp;
-            }
-            pointer++;
-        }
-    }
-    //swap back pivot to proper position
-    swp=a[end];
-    a[end]=a[pointer];
-    a[pointer]=swp;
-    quicksort_r(a,start,pointer-1);
-    quicksort_r(a,pointer+1,end);
-    return 0;
-}
+/* END OF SIMPLE FUNCTIONS*/
