@@ -19,12 +19,14 @@ int show_list(stk *head) {
 			iterator++;
 			curent = curent->next;
 			printf("%d ", curent->data);
-		}
+		}/* End of while */
+		
 		printf("and there are %d numbers", iterator);
 		printf("\n");
 		Sleep(2000);
 		return iterator;
-	}
+	}/* End of if */
+	
 	else {
 		printf(" There are no values !!! \n");
 		Sleep(2000);
@@ -61,8 +63,8 @@ void STACKS_AND_QUE(){
 			printf(" Wrong choice ! ");
 			Sleep(2000);
 			break;
-		}
-	}
+		}/* End of switch */
+	}/* End of while */
 }
 
 bool check_is_sorted(stk *head) {
@@ -87,8 +89,8 @@ bool check_is_sorted(stk *head) {
 				Sleep(2000);
 				return false;
 			}
-		}	
-	}
+		}/* End of while */	
+	}/* End of else */
 }
 
 int get_max(stk *head) {    
@@ -137,8 +139,7 @@ void binary_search(stk *head) {
 			Sleep(3000);
 			break;
 		}
-	}
-
+	}/* End of while */
 }
 
 void push_back(stk *head) {
@@ -240,8 +241,8 @@ void STACKS(stk *head) {
 			printf("Wrong choice ! \n");
 			Sleep(2000);
 			break;
-		}
-	}
+		}/* End of switch */
+	}/* End of while */
 }
 
 void COADA(stk *head) {
@@ -284,8 +285,8 @@ void COADA(stk *head) {
 			printf("Wrong choice ! \n");
 			Sleep(2000);
 			break;
-		}
-	}
+		}/* End of switch */
+	}/* End of while */
 }
 
 /* END OF << STACK AND QUE FUNCTIONS >> */
