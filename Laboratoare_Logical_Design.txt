@@ -1,0 +1,53 @@
+======================================
+Tema10
+
+----------------------------------------------------------------------------------
+-- Company: 
+-- Engineer: 
+-- 
+-- Create Date:    18:55:36 04/14/2016 
+-- Design Name: 
+-- Module Name:    tema10sch - Behavioral 
+-- Project Name: 
+-- Target Devices: 
+-- Tool versions: 
+-- Description: 
+--
+-- Dependencies: 
+--
+-- Revision: 
+-- Revision 0.01 - File Created
+-- Additional Comments: 
+--
+----------------------------------------------------------------------------------
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+---- Uncomment the following library declaration if instantiating
+---- any Xilinx primitives in this code.
+--library UNISIM;
+--use UNISIM.VComponents.all;
+
+entity tema10sch is
+    Port ( iClk : in  STD_LOGIC;
+           iClear : in  STD_LOGIC;
+           iData1 : in  STD_LOGIC;
+           iData2 : in  STD_LOGIC;
+           iSelect : in  STD_LOGIC;
+           oQ : out  STD_LOGIC);
+end tema10sch;
+
+architecture Behavioral of tema10sch is
+
+begin
+
+oQ<= '0' when iClear='1' else
+===================================================
+
+	  iData1 when iSelect='0' and falling_edge(iClk) else 
+	  iData2 when iSelect='1' and falling_edge(iClk);
+
+end Behavioral;
+
