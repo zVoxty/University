@@ -5,7 +5,7 @@
 /*
 void SHOW(){
 	printf("--------------------------------------------------\n");
-	printf("		Sudoku Solver By Voxty\n");
+	printf("		Sudoku Solver By Vasile Sebastian Costinel\n");
 	printf("--------------------------------------------------\n\n");
 	printf("\t 1 -> Generate a Sudoku Puzzle  \n");
 	printf("\t 2 -> Solve Generated Puzzle \n");
