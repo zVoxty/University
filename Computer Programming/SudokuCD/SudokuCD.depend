@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1461510332 source:c:\users\zvoxty\desktop\sudokucd\main.c
+	"sudoku.h"
+
+1461508989 c:\users\zvoxty\desktop\sudokucd\sudoku.h
+	<stdio.h>
+	<windows.h>
+	<stdbool.h>
+	<math.h>
+
+1461510531 source:c:\users\zvoxty\desktop\sudokucd\sudoku.c
+	"sudoku.h"
+
