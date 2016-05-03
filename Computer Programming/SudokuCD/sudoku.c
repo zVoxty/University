@@ -1,5 +1,7 @@
 #include "sudoku.h"
 
+
+// A function which to determine box size
 int boxLength(int sz){
     int j;
     for(j = sz / 2 ; j >= 1; j--){
@@ -9,17 +11,19 @@ int boxLength(int sz){
     }
 }
 
+// A function to BackUp the puzzle
 void copyPuzzle(int puzzle[sz][sz], int copy[sz][sz]){
     int i, j;
     for(i = 0; i < sz; i++){
         for(j = 0; j < sz; j++){
-            copy[i][j] = puzzle[i][j];
+            copy[i][j] = puzzle[i][j]; //Store the matrix into other matrix
         }
     }
     printf("\t\t Succesfull Backup !\n");
     Sleep(1000);
 }
 
+// An another function to BackUp the puzzle
 void pastePuzzle(int puzzle[sz][sz], int copy[sz][sz]){
     int i, j;
     for(i = 0; i < sz; i++){
@@ -29,33 +33,38 @@ void pastePuzzle(int puzzle[sz][sz], int copy[sz][sz]){
     }
 }
 
+// Function which will print puzzle
 void printPuzzle(int puzzle[sz][sz], int sz){
     int i,j;
+
+    // Get length of box
     int x = boxLength(sz);
+
+
     if(sz == 0 || x*x != sz){
             printf("\t\t         Nothing to draw ! \n");
             Sleep(500);
     }
+
     else{
-            for(i = 0; i < sz; i++){
-                printf("\t\t");
-                for(j = 0; j < sz;j++){
-                   if(j==0)
-                        printf("| ");
-                   if(puzzle[i][j]==0)
-                        printf(". ");
-                   else
-                        printf("%d ",puzzle[i][j]);
-                   if((j+1)%x==0 )
-                        printf("| ");
-                }
-
-                if((i+1)%x==0 )
-                    printf("\n");
-
+        for(i = 0; i < sz; i++){
+            printf("\t\t");
+            for(j = 0; j < sz;j++){
+                if(j==0)
+                    printf("| ");
+                if(puzzle[i][j]==0)
+                    printf(". ");
+                else
+                    printf("%d ",puzzle[i][j]);
+                if((j+1)%x==0 )
+                    printf("| ");
+            }
+            if((i+1)%x==0 ){
                 printf("\n");
             }
 
+            printf("\n");
+        }
     }
 }
 
@@ -76,10 +85,12 @@ void insertNumberInPozition(int puzzle[sz][sz], int sz){
         if(nr == 0){
             break;
         }
+
         if(nr > sz || pos1 > sz || pos2 >sz){
             printf("\t\t Numbers is too large !\n");
             Sleep(2000);
         }
+
         else{
             puzzle[pos1-1][pos2-1] = nr;
         }
@@ -163,13 +174,13 @@ void randomGeneration(int puzzle[sz][sz]){
 	//Sleep(1000);
 }
 
-/*SOLVE PART 1*/
+/*SOLVE PART */
 
 /* Searches the puzzle to find an entry that is still unassigned. If
    found, the reference parameters row, col will be set the location
    that is unassigned, and true is returned. If no unassigned entries
    remain, false is returned. */
-//================================================================================
+
 int FindUnassigned(int puzzle[sz][sz],int *row,int *col){
     for(*row = 0;*row < sz;(*row)++){
         for(*col = 0;*col < sz;(*col)++){
@@ -180,6 +191,20 @@ int FindUnassigned(int puzzle[sz][sz],int *row,int *col){
     return 0;
 }
 
+/* Returns a boolean which indicates whether it will be legal to assign
+   num to the given row,col location. */
+int isSafe(int puzzle[sz][sz],int row,int col,int num){
+    int x = boxLength(sz);
+
+    /* Check if 'num' is not already placed in current row,
+       current column and current box */
+    if(UsedInRow(puzzle,row,num) == 0 && UsedInCol(puzzle,col,num) == 0 &&
+       UsedInBox(puzzle,(row - row%x),(col - col%x),num) == 0) return 1;
+    return 0;
+}
+
+/* Returns a boolean which indicates whether any assigned entry
+   in the specified row matches the given number. */
 int UsedInRow(int puzzle[sz][sz],int row,int num){
     int i;
     for(i = 0;i < sz;i++){
@@ -188,6 +213,8 @@ int UsedInRow(int puzzle[sz][sz],int row,int num){
     return 0;
 }
 
+/* Returns a boolean which indicates whether any assigned entry
+   in the specified column matches the given number. */
 int UsedInCol(int puzzle[sz][sz],int col,int num){
     int i;
     for(i = 0;i < sz;i++){
@@ -196,6 +223,8 @@ int UsedInCol(int puzzle[sz][sz],int col,int num){
     return 0;
 }
 
+/* Returns a boolean which indicates whether any assigned entry
+   within the specified box matches the given number. */
 int UsedInBox(int puzzle[sz][sz],int BoxStartRow,int BoxStartCol,int num){
     int i,j;
     int x = boxLength(sz);
@@ -207,98 +236,39 @@ int UsedInBox(int puzzle[sz][sz],int BoxStartRow,int BoxStartCol,int num){
     return 0;
 }
 
-int isSafe(int puzzle[sz][sz],int row,int col,int num){
-    int x = boxLength(sz);
-    if(UsedInRow(puzzle,row,num) == 0 && UsedInCol(puzzle,col,num) == 0 &&
-       UsedInBox(puzzle,(row - row%x),(col - col%x),num) == 0) return 1;
-    return 0;
-}
-
+/* Takes a partially filled-in grid and attempts to assign values to
+  all unassigned locations in such a way to meet the requirements
+  for Sudoku solution (non-duplication across rows, columns, and boxes) */
 int SolveSudoku(int puzzle[sz][sz]){
     int row,col;
-
-    if(FindUnassigned(puzzle,&row,&col) == 0)
-        return 1;
     int num;
 
-    for(num = 1;num <= sz;num++){
-        if(isSafe(puzzle,row,col,num) == 1){
-            puzzle[row][col] =  num;
-            if(SolveSudoku(puzzle) == 1){
+    // If there is no unassigned location, we are done
+    if(FindUnassigned(puzzle,&row,&col) == 0){
+        return 1;
+    }
 
+    // consider digits 1 to SZ
+    for(num = 1;num <= sz;num++){
+
+        // if looks promising
+        if(isSafe(puzzle,row,col,num) == 1){
+
+            // make tentative assignment
+            puzzle[row][col] =  num;
+
+            // return, if success, yay!
+            if(SolveSudoku(puzzle) == 1){
                 printPuzzle(puzzle, sz);
                 printf("\n");
-
             }
 
-            //backtrack here
+            // failure, unmake & try again (BACKTRACK)
             puzzle[row][col] = UNASSIGNED;
         }
     }
 
-    return 0;
-}
-
-/*SOLVE PART 2*/
-
-int fillSudoku(int puzzle[][sz], int row, int col)
-{
-    int i;
-    if(row<sz && col<sz)
-    {
-        if(puzzle[row][col] != 0)
-        {
-            if((col+1)<sz)
-				return fillSudoku(puzzle, row, col+1);
-            else if((row+1)<sz)
-				return fillSudoku(puzzle, row+1, 0);
-            else
-				return 1;
-        }
-        else
-        {
-            for(i = 0; i < sz; ++i)
-            {
-                if(isAvailable(puzzle, row, col, i+1))
-                {
-                    puzzle[row][col] = i+1;
-                    if((col+1) < sz)
-                    {
-                        if(fillSudoku(puzzle, row, col +1)) return 1;
-                        else puzzle[row][col] = 0;
-                    }
-                    else if((row+1)<sz)
-                    {
-                        if(fillSudoku(puzzle, row+1, 0)) return 1;
-                        else puzzle[row][col] = 0;
-                    }
-                    else return 1;
-                }
-            }
-        }
-        return 0;
-    }
-    else
- 		return 1;
-}
-
-int isAvailable(int puzzle[][sz], int row, int col, int num)
-{
-	int i, j;
-	for(j = sz / 2; j >= 2; j--){
-		if(pow(j,2) == sz){
-		    int rowStart = (row/j) * j;
-		    int colStart = (col/j) * j;
-
-		    for(i=0; i<sz; ++i)
-		    {
-		        if (puzzle[row][i] == num) return 0;
-		        if (puzzle[i][col] == num) return 0;
-		        if (puzzle[rowStart + (i%j)][colStart + (i/j)] == num) return 0;
-		    }
-		    return 1;
-		}
-	}
+    return 0; // this triggers backtracking
 }
 
 
