@@ -1,7 +1,7 @@
 #include "sudoku.h"
 
 
-// A function which to determine box size
+///\ A function which to determine box size
 int boxLength(int sz){
     int j;
     for(j = sz / 2 ; j >= 1; j--){
@@ -11,19 +11,19 @@ int boxLength(int sz){
     }
 }
 
-// A function to BackUp the puzzle
+///\ A function to BackUp the puzzle
 void copyPuzzle(int puzzle[sz][sz], int copy[sz][sz]){
     int i, j;
     for(i = 0; i < sz; i++){
         for(j = 0; j < sz; j++){
-            copy[i][j] = puzzle[i][j]; //Store the matrix into other matrix
+            copy[i][j] = puzzle[i][j]; ///\ Store the matrix into other matrix
         }
     }
     printf("\t\t Succesfull Backup !\n");
     Sleep(1000);
 }
 
-// An another function to BackUp the puzzle
+///\ An another function to BackUp the puzzle
 void pastePuzzle(int puzzle[sz][sz], int copy[sz][sz]){
     int i, j;
     for(i = 0; i < sz; i++){
@@ -33,11 +33,11 @@ void pastePuzzle(int puzzle[sz][sz], int copy[sz][sz]){
     }
 }
 
-// Function which will print puzzle
+///\ Function which will print puzzle
 void printPuzzle(int puzzle[sz][sz], int sz){
     int i,j;
 
-    // Get length of box
+    ///\ Get length of box
     int x = boxLength(sz);
 
 
@@ -110,14 +110,14 @@ int counter(int puzzle[sz][sz]){
 	for(i = 0; i < sz; i++){
 		for(j = 0; j < sz; j++){
 			if(puzzle[i][j]!=0){
-				count++;  //\ Increase counter when pozition is not equal to 0.
+				count++;  ///\ Increase counter when pozition is not equal to 0.
 			}
 		}
 	}
-	return count; //\ Return counter value
+	return count; ///\ Return counter value
 }
 
-/* RANDOM GENERATION FUNCTIONS */
+///\ RANDOM GENERATION FUNCTIONS
 bool existsRow(int puzzle[sz][sz], int row, int value) {
 	int col;
     for (col = 0; col < sz; col++) {
@@ -128,7 +128,7 @@ bool existsRow(int puzzle[sz][sz], int row, int value) {
     return false;
 }
 
-//\ Function which will check if the value exist on actual Col .
+///\ Function which will check if the value exist on actual Col .
 bool existsCol(int puzzle[sz][sz], int col, int value) {
 	int row;
     for (row = 0; row < sz; row++) {
@@ -139,7 +139,7 @@ bool existsCol(int puzzle[sz][sz], int col, int value) {
     return false;
 }
 
-//\ Function which will check if the value exist on actual box .
+///\ Function which will check if the value exist on actual box .
 bool existsBox(int puzzle[sz][sz], int boxRow, int boxCol, int value) {
 	int row,col;
     for (row = 0; row < 3; row++) {
@@ -152,7 +152,7 @@ bool existsBox(int puzzle[sz][sz], int boxRow, int boxCol, int value) {
     return false;
 }
 
-//\ Give permission to insert value in primary matrix !
+///\ Give permission to insert value in primary matrix !
 bool legalAssign(int puzzle[sz][sz], int row, int col, int value) {
     int x = boxLength(sz);
     return !existsRow(puzzle, row, value) && !existsCol(puzzle, col, value) && !existsBox(puzzle, row-row%x, col-col%x, value);
@@ -160,26 +160,26 @@ bool legalAssign(int puzzle[sz][sz], int row, int col, int value) {
 
 void randomGeneration(int puzzle[sz][sz]){
     int i;
-    srand(time(NULL));  //\ Random seed by clock.
+    srand(time(NULL));  ///\ Random seed by clock.
     for (i = 0; i < sz*2; i++) {
-        int row = rand() % sz + 1;   //\ Generate random numbers on rows !
-        int col = rand() % sz + 1;   //\ Generate random numbers on columns !
-        int val = rand() % sz + 1;   //\ Generate a value which will fill matrix !
+        int row = rand() % sz + 1;   ///\ Generate random numbers on rows !
+        int col = rand() % sz + 1;   ///\ Generate random numbers on columns !
+        int val = rand() % sz + 1;   ///\ Generate a value which will fill matrix !
         if (legalAssign(puzzle, row, col, val))
             puzzle[row][col] = val;
     }
 
-    int x = counter(puzzle);     //\ Declare a variable which will store how much numbers are avaiable on matrix.
-	//printf("\t\t Sudoku puzzle succesfull generated !!\n\t\t There are %d numbers avaiable, program have to find %d numbers ! \n", x, sz*sz - x);
-	//Sleep(1000);
+    int x = counter(puzzle);     ///\ Declare a variable which will store how much numbers are avaiable on matrix.
+	///\ printf("\t\t Sudoku puzzle succesfull generated !!\n\t\t There are %d numbers avaiable, program have to find %d numbers ! \n", x, sz*sz - x);
+	///\ Sleep(1000);
 }
 
-/*SOLVE PART */
+///\ SOLVE PART
 
-/* Searches the puzzle to find an entry that is still unassigned. If
-   found, the reference parameters row, col will be set the location
-   that is unassigned, and true is returned. If no unassigned entries
-   remain, false is returned. */
+///\ Searches the puzzle to find an entry that is still unassigned. If
+///\   found, the reference parameters row, col will be set the location
+///\   that is unassigned, and true is returned. If no unassigned entries
+///\   remain, false is returned.
 
 int FindUnassigned(int puzzle[sz][sz],int *row,int *col){
     for(*row = 0;*row < sz;(*row)++){
@@ -191,20 +191,20 @@ int FindUnassigned(int puzzle[sz][sz],int *row,int *col){
     return 0;
 }
 
-/* Returns a boolean which indicates whether it will be legal to assign
-   num to the given row,col location. */
+///\ Returns a boolean which indicates whether it will be legal to assign
+///\   num to the given row,col location. 
 int isSafe(int puzzle[sz][sz],int row,int col,int num){
     int x = boxLength(sz);
 
-    /* Check if 'num' is not already placed in current row,
-       current column and current box */
+    ///\ Check if 'num' is not already placed in current row,
+    ///\   current column and current box 
     if(UsedInRow(puzzle,row,num) == 0 && UsedInCol(puzzle,col,num) == 0 &&
        UsedInBox(puzzle,(row - row%x),(col - col%x),num) == 0) return 1;
     return 0;
 }
 
-/* Returns a boolean which indicates whether any assigned entry
-   in the specified row matches the given number. */
+///\ Returns a boolean which indicates whether any assigned entry
+///\ in the specified row matches the given number.
 int UsedInRow(int puzzle[sz][sz],int row,int num){
     int i;
     for(i = 0;i < sz;i++){
@@ -213,8 +213,8 @@ int UsedInRow(int puzzle[sz][sz],int row,int num){
     return 0;
 }
 
-/* Returns a boolean which indicates whether any assigned entry
-   in the specified column matches the given number. */
+///\ Returns a boolean which indicates whether any assigned entry
+///\   in the specified column matches the given number. */
 int UsedInCol(int puzzle[sz][sz],int col,int num){
     int i;
     for(i = 0;i < sz;i++){
