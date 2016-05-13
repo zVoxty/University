@@ -223,8 +223,8 @@ int UsedInCol(int puzzle[sz][sz],int col,int num){
     return 0;
 }
 
-/* Returns a boolean which indicates whether any assigned entry
-   within the specified box matches the given number. */
+///\  Returns a boolean which indicates whether any assigned entry
+///\    within the specified box matches the given number. */
 int UsedInBox(int puzzle[sz][sz],int BoxStartRow,int BoxStartCol,int num){
     int i,j;
     int x = boxLength(sz);
@@ -236,39 +236,39 @@ int UsedInBox(int puzzle[sz][sz],int BoxStartRow,int BoxStartCol,int num){
     return 0;
 }
 
-/* Takes a partially filled-in grid and attempts to assign values to
-  all unassigned locations in such a way to meet the requirements
-  for Sudoku solution (non-duplication across rows, columns, and boxes) */
+///\  Takes a partially filled-in grid and attempts to assign values to
+///\   all unassigned locations in such a way to meet the requirements
+///\   for Sudoku solution (non-duplication across rows, columns, and boxes) */
 int SolveSudoku(int puzzle[sz][sz]){
     int row,col;
     int num;
 
-    // If there is no unassigned location, we are done
+    ///\  If there is no unassigned location, we are done
     if(FindUnassigned(puzzle,&row,&col) == 0){
         return 1;
     }
 
-    // consider digits 1 to SZ
+    ///\  consider digits 1 to SZ
     for(num = 1;num <= sz;num++){
 
-        // if looks promising
+        ///\  if looks promising
         if(isSafe(puzzle,row,col,num) == 1){
 
-            // make tentative assignment
+            ///\  make tentative assignment
             puzzle[row][col] =  num;
 
-            // return, if success, yay!
+            ///\  return, if success, yay!
             if(SolveSudoku(puzzle) == 1){
                 printPuzzle(puzzle, sz);
                 printf("\n");
             }
 
-            // failure, unmake & try again (BACKTRACK)
+            ///\  failure, unmake & try again (BACKTRACK)
             puzzle[row][col] = UNASSIGNED;
         }
     }
 
-    return 0; // this triggers backtracking
+    return 0; ///\  this triggers backtracking
 }
 
 
