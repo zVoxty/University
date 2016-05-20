@@ -3,7 +3,6 @@
 int main(){
     FILE *fileToPrint;
     fileToPrint = fopen("Solutions.out","w");
-    int IteratiiSolve = 1000;
 
     ///\ Create Interface of Program
     while(!Start){
@@ -42,7 +41,7 @@ int main(){
                     GenerateRandomPuzzle(puzzle, copy, fileToPrint, SizeOfPuzzle);
                     break;
                 case 4:
-                    SolvePuzzle(puzzle, fileToPrint, SizeOfPuzzle, IteratiiSolve);
+                    SolvePuzzle(puzzle, fileToPrint, SizeOfPuzzle);
                     break;
                 case 5:
                     Back(puzzle, copy, SizeOfPuzzle);

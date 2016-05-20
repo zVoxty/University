@@ -62,16 +62,22 @@ int UsedInBox(int puzzle[SizeOfPuzzle][SizeOfPuzzle],int BoxStartRow,int BoxStar
 ///\  Takes a partially filled-in grid and attempts to assign values to
 ///\   all unassigned locations in such a way to meet the requirements
 ///\   for Sudoku solution (non-duplication across rows, columns, and boxes) */
-int SolveSudoku(int puzzle[SizeOfPuzzle][SizeOfPuzzle], FILE *fileName, int Iteratii){
+int SolveSudoku(int puzzle[SizeOfPuzzle][SizeOfPuzzle], FILE *fileName){
     int row,col;
     int num;
-
-    while(Iteratii > 0){
-        Iteratii--;
         ///\  If there is no unassigned location, we are done
         if(FindUnassigned(puzzle,&row,&col) == 0){
             return 1;
+            /*
+             //Enable it for all solutions
+            printPuzzleInFile(fileName, puzzle, SizeOfPuzzle);
+            if(puzzle[0][0] > SizeOfPuzzle){
+                fclose(fileName);
+                exit(1);
+            }
+            */
         }
+
 
         ///\  consider digits 1 to SizeOfPuzzle
         for(num = 1;num <= SizeOfPuzzle;num++){
@@ -81,19 +87,19 @@ int SolveSudoku(int puzzle[SizeOfPuzzle][SizeOfPuzzle], FILE *fileName, int Iter
 
                 ///\  make tentative assignment
                 puzzle[row][col] =  num;
+               // printPuzzle(puzzle, SizeOfPuzzle);
 
                 ///\  return, if success
-                if(SolveSudoku(puzzle, fileName, Iteratii) == 1){
-                   // printPuzzleInFile(fileName,puzzle, SizeOfPuzzle);
+                if(SolveSudoku(puzzle, fileName) == 1){
                     return 1;
                 }
-                else{
-                    ///\  failure, unmake & try again (BACKTRACK)
+                ///\  failure, unmake & try again (BACKTRACK)
                 puzzle[row][col] = UNASSIGNED;
-                }
+                //printPuzzle(puzzle, SizeOfPuzzle);
+
             }
         }
-    }
+
 
     return 0; ///\  this triggers backtracking
 }

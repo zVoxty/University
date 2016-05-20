@@ -60,3 +60,24 @@
 1463570251 source:c:\users\user\desktop\university-master\university-master\computer programming\sudokuprogrammingproject\main.c
 	"sudoku.h"
 
+1463737695 source:c:\users\zvoxty\desktop\university-master\university-master\sudokuprogrammingproject1\display.c
+	"sudoku.h"
+
+1463735945 c:\users\zvoxty\desktop\university-master\university-master\sudokuprogrammingproject1\sudoku.h
+	<stdio.h>
+	<windows.h>
+	<stdbool.h>
+	<math.h>
+
+1463614776 source:c:\users\zvoxty\desktop\university-master\university-master\sudokuprogrammingproject1\essentialfunctions.c
+	"sudoku.h"
+
+1463614776 source:c:\users\zvoxty\desktop\university-master\university-master\sudokuprogrammingproject1\generatesudokupuzzle.c
+	"sudoku.h"
+
+1463736938 source:c:\users\zvoxty\desktop\university-master\university-master\sudokuprogrammingproject1\main.c
+	"sudoku.h"
+
+1463739431 source:c:\users\zvoxty\desktop\university-master\university-master\sudokuprogrammingproject1\sudokusolver.c
+	"sudoku.h"
+

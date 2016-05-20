@@ -43,8 +43,8 @@ void GenerateRandomPuzzle(int puzzle, int copy, FILE *nameOfFile, int SizeOfPuzz
     printPuzzleInFile(nameOfFile,puzzle,SizeOfPuzzle, " \n");
 }
 
-void SolvePuzzle(int puzzle, FILE *fileToPrint, int SizeOfPuzzle, int Iteratii){
-    if(SolveSudoku(puzzle,fileToPrint,Iteratii) == 1){
+void SolvePuzzle(int puzzle, FILE *fileToPrint, int SizeOfPuzzle){
+    if(SolveSudoku(puzzle,fileToPrint) == 1){
         ///\ The solution is printed on console display
         ///\ printPuzzle(puzzle, SizeOfPuzzle);
 
@@ -55,8 +55,10 @@ void SolvePuzzle(int puzzle, FILE *fileToPrint, int SizeOfPuzzle, int Iteratii){
         Sleep(2000);
     }
     else{
-        printf("\t\t No solutions ! !\n");
-        Sleep(3000);
+        //fprintf(fileToPrint, " There are %d solutions ", counter);
+        fclose(fileToPrint);
+        printf("\t\t No more solutions check your file ! !\n");
+        Sleep(2000);
     }
 }
 
