@@ -4,7 +4,7 @@ int main(){
     FILE *fileToPrint;
     fileToPrint = fopen("Solutions.out","w");
 
-    ///\ Create Interface of Program
+    /** Create Interface of Program */
     while(!Start){
         GameOver = false;
         system("CLS");
@@ -15,7 +15,7 @@ int main(){
         int puzzle[SizeOfPuzzle][SizeOfPuzzle];
         int copy[SizeOfPuzzle][SizeOfPuzzle];
         int i, j;
-        ///\ Here is generated the puzzle full with 0
+        /** Here is generated the puzzle full with 0 */
         for(i = 0; i < SizeOfPuzzle; i++){
             for(j = 0; j < SizeOfPuzzle; j++){
                 puzzle[i][j] = 0;

@@ -7,10 +7,9 @@
 #include <math.h>
 #define UNASSIGNED 0
 
-int SizeOfPuzzle;
-bool GameOver;
-bool Start;
-int choice;
-
+int SizeOfPuzzle; /** Size of puzzle */
+bool GameOver;    /** Game status */
+bool Start;       /** Interface status */
+int choice;       /** Choice status for switch statements */
 
 #endif

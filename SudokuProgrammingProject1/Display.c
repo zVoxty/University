@@ -1,5 +1,6 @@
 #include "sudoku.h"
 
+/** Generate intro interface. */
 void Intro(){
     printf("\t\t----------------------------------------------------\n");
     printf("\t\t              Sudoku Project Developed \n");
@@ -14,7 +15,7 @@ void Intro(){
     printf("\t\t\t - 25x25 = 10 percet chance !\n");
     printf("\t\t----------------------------------------------------\n");
 }
-
+/** Generate chose options interface for switch . */
 void ChoseOptions(){
     printf("\n");
     printf("\t\t 1 -> Change sudoku size \n");
@@ -45,7 +46,7 @@ void GenerateRandomPuzzle(int puzzle, int copy, FILE *nameOfFile, int SizeOfPuzz
 
 void SolvePuzzle(int puzzle, FILE *fileToPrint, int SizeOfPuzzle){
     if(SolveSudoku(puzzle,fileToPrint) == 1){
-        ///\ The solution is printed on console display
+        /** The solution is printed on console display. /** Generate print interface. */
         ///\ printPuzzle(puzzle, SizeOfPuzzle);
 
         ///\ The solution is printed on Solutions file !
