@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1464452033 source:c:\users\zvoxty\desktop\mostenirea\functions.c
+	"engine.h"
+
+1464448701 c:\users\zvoxty\desktop\mostenirea\engine.h
+	<stdlib.h>
+	<stdio.h>
+
+1464451736 source:c:\users\zvoxty\desktop\mostenirea\main.c
+	"engine.h"
+
