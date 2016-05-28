@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1464471866 source:c:\users\zvoxty\desktop\ionut\main.c
+	"engine.h"
+
+1464471865 c:\users\zvoxty\desktop\ionut\engine.h
+	<stdio.h>
+
+1464470183 source:c:\users\zvoxty\desktop\ionut\functions.c
+	"engine.h"
+
