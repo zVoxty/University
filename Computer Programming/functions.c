@@ -454,3 +454,22 @@ void swap(int *a,int  *b) {
 }
 
 /* END OF SIMPLE FUNCTIONS*/
+
+/* GRAPH FUNCTIONS*/
+void dfs(Nod *head, int numberNodes, int root, int adiacentMatrix[100][100], int vectorVisit[100]){
+    int i, j;
+    push_first(head, root);
+
+    while(head->next != NULL){
+        root = pop_first(head);
+        vectorVisit[root] = 1;
+        printf(" %d ", root);
+
+        for(i = numberNodes; i >= 1; i--){
+            if(adiacentMatrix[root][i] == 1 && vectorVisit[i] == 0){
+                push_first(head, i);
+            }
+        }
+    }
+}
+/* END OF GRAPH FUNCTIONS*/
