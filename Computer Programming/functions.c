@@ -471,5 +471,29 @@ void dfs(Nod *head, int numberNodes, int root, int adiacentMatrix[100][100], int
             }
         }
     }
+    for(i = numberNodes; i >= 1; i--){
+        vectorVisit[i] = 0;
+    }
+}
+
+void bfs(Nod *head, int numberNodes, int root, int adiacentMatrix[100][100], int vectorVisit[100]){
+    int i, j;
+
+    push_first(head, root);
+
+    while(head->next != NULL){
+        root = pop_back(head);
+        vectorVisit[root] = 1;
+        printf(" %d ", root);
+
+        for(i = 1; i <= numberNodes; i++){
+            if(adiacentMatrix[root][i] == 1 && vectorVisit[i] == 0){
+                push_first(head, i);
+            }
+        }
+    }
+    for(i = numberNodes; i >= 1; i--){
+        vectorVisit[i] = 0;
+    }
 }
 /* END OF GRAPH FUNCTIONS*/
