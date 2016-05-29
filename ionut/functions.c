@@ -40,3 +40,9 @@ void display(int money, int *arr) {
 	printf("\n");
 }
 
+int GenerateNumber(int maxsize,int seed){
+    srand(time(NULL)*seed);
+    int value = rand() % maxsize;
+    return value;
+}
+

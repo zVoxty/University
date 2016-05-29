@@ -1,35 +1,43 @@
 
 #include "engine.h"
 
-int main(void) {
-    FILE *data;
-    data = fopen("teste.in","r");
+int main(){
+    FILE *data = fopen("testgen.in","w");
 
     if(data == NULL){
         printf("ERROR: Can't open the file !");
     }
+        int choice;
+        int money;
+        printf("Insert money sum : ");
+     //   money = GenerateNumber(500,1); //Enable autogenerate
+        scanf("%d", &money);            //Enable keyboard
+        fprintf(data,"%d \n",money);
 
-    printf("========================================\n");
+        int coinType;
+        printf("Insert coin types: ");
+      //  coinType = GenerateNumber(10,1);  //Enable autogenerate
+        scanf("%d", &coinType);             //Enable keyboard
+        fprintf(data,"%d \n", coinType);
 
-    int money;
+        if(coinType == 0){
+            printf("Invalid generation, try again !");
+            exit(0);
+        }
+        printf("Insert coins : ");
+        int coins, i;
+        for(i = 1; i <= coinType; i++){
+         //   coins = GenerateNumber(50,i); //Enable autogenerate
+            scanf("%d", &coins);            //Enable keyboard
+            fprintf(data, "%d\n",coins);
+        }
 
-    int nrTeste;
-    fscanf(data,"%d", &nrTeste);
-    printf("Number of tests is : %d \n", nrTeste);
-    printf("========================================\n\n");
+        fclose(data);
+        FILE *data1 = fopen("testgen.in","r");
 
-    while(nrTeste > 0){
-
-        printf("START OF TEST %d\n\n", nrTeste);
-
-        int i, coinType;
-      //  printf("Insert money : ");
-        fscanf(data,"%d", &money);
+        fscanf(data1,"%d", &money);
         printf("Money test = %d \n", money);
 
-        //denomination d of the coins
-        //we will start from index 1
-        //so, index 0 is set to 0
         int *coinTypesArray;
         coinTypesArray = (int*) malloc(money * sizeof(int));
 
@@ -42,47 +50,27 @@ int main(void) {
         int *coinIndex;
         coinIndex = (int*) malloc(money * sizeof(int));
 
-     //   printf("Insert number of coins type : ");
-        fscanf(data ,"%d", &coinType);
+        fscanf(data1 ,"%d", &coinType);
         printf("There are %d coins types ! \n", coinType);
 
         coinTypesArray[0] = 0;
 
-        for(i = 1; i <= coinType; i++){
-      //      printf("Insert type [%d] coin : ", i);
-            fscanf(data,"%d", &coinTypesArray[i]);
-        }
         printf("Type of coins is : ");
         for(i = 1; i <= coinType; i++){
-            printf(" %d ", coinTypesArray[i]);
+            fscanf(data1,"%d", &coinTypesArray[i]);
+            printf("%d ", coinTypesArray[i]);
         }
-        printf("\n");
-        //compute minimum number of coins required
+
         coinChange(money, coinTypesArray, coinType, minCoin, coinIndex);
 
-        //display the content of the C array
-        printf("\n minCoin[p]\n");
-        display(money, minCoin);
-
-        //display the content of the S array
-        printf("\n coinIndex[p]\n");
-        display(money, coinIndex);
-
-        //display the minimum number of coins required to
-        //make change for amount A
         printf("\nMin. no. of coins required to make change for amount %d = %d\n", money, minCoin[money]);
 
         //display the coins used in the optimal solution
         printf("\nCoin Set\n");
         coinSet(money, coinTypesArray, coinIndex);
 
-        printf("\n\nEND OF TEST %d\n\n", nrTeste);
-        printf("========================================\n\n");
-        nrTeste--;
+        fclose(data1);
 
-
-    }
-	return 0;
+    return 0;
 }
-
 
