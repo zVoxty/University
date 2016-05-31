@@ -1,0 +1,11 @@
+<map id="GenerateRandomPuzzle" name="GenerateRandomPuzzle">
+<area shape="rect" id="node3" href="$essential_functions_8c.html#a8eaeede37db53451c87add11896a43c3" title="A function to BackUp the puzzle. " alt="" coords="235,56,325,83"/>
+<area shape="rect" id="node5" href="$_generate_sudoku_puzzle_8c.html#a6a49f0a7a0398f2659d6642120ea48dc" title="There is Generation algorithm of our Sudoku puzzle, it is a simple generation using backtracking meth..." alt="" coords="216,107,344,133"/>
+<area shape="rect" id="node19" href="$essential_functions_8c.html#a84f997248a88866cd3d6f1f6e53dc643" title="Function which will print puzzle in a file. " alt="" coords="393,157,511,184"/>
+<area shape="rect" id="node7" href="$_generate_sudoku_puzzle_8c.html#a267a6d32821d62a5184da4855cb03091" title="Give permission to insert value in primary matrix. " alt="" coords="407,56,497,83"/>
+<area shape="rect" id="node17" href="$essential_functions_8c.html#aef6fed37e953a394086142cbd93bb2ad" title="Counter function will return how many numbers shoud be finded in our sudoku puzzle. " alt="" coords="419,107,485,133"/>
+<area shape="rect" id="node9" href="$essential_functions_8c.html#a81a7d2317015b03938b3272ef99df691" title="A function which will determine box size. " alt="" coords="560,157,643,184"/>
+<area shape="rect" id="node11" href="$_generate_sudoku_puzzle_8c.html#a3d79c9c1f77209505ee449e8c6bc5ab2" title="There is Generation algorithm of our Sudoku puzzle, it is a simple generation using backtracking meth..." alt="" coords="560,5,643,32"/>
+<area shape="rect" id="node13" href="$_generate_sudoku_puzzle_8c.html#aed140ba5f01d4c8cf24ad69b22a700d8" title="Function which will check if the value exist on actual Column . " alt="" coords="563,56,639,83"/>
+<area shape="rect" id="node15" href="$_generate_sudoku_puzzle_8c.html#abf81a768e692f635d7c0dd855240921a" title="Function which will check if the value exist on actual box . " alt="" coords="561,107,641,133"/>
+</map>

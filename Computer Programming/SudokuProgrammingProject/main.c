@@ -1,9 +1,10 @@
 #include "sudoku.h"
 
 int main(){
-FILE *fileToPrint;
-fileToPrint = fopen("Solutions.out","w");
-    ///\ Create Interface of Program
+    FILE *fileToPrint;
+    fileToPrint = fopen("Solutions.out","w");
+
+    ///\brief Create Interface of Program
     while(!Start){
         GameOver = false;
         system("CLS");
@@ -14,7 +15,7 @@ fileToPrint = fopen("Solutions.out","w");
         int puzzle[SizeOfPuzzle][SizeOfPuzzle];
         int copy[SizeOfPuzzle][SizeOfPuzzle];
         int i, j;
-        ///\ Here is generated the puzzle full with 0
+        ///\brief Here is generated the puzzle full with 0
         for(i = 0; i < SizeOfPuzzle; i++){
             for(j = 0; j < SizeOfPuzzle; j++){
                 puzzle[i][j] = 0;
@@ -24,12 +25,9 @@ fileToPrint = fopen("Solutions.out","w");
             system("CLS");
 
             Intro();
-
-            printf("\t\t Size of puzzle is %d \n\n",SizeOfPuzzle);
-            printf("\t\t Your actual sudoku puzzle is: \n\n");
-            printPuzzle(puzzle, SizeOfPuzzle);
-
+            AskSize(SizeOfPuzzle, puzzle);
             ChoseOptions();
+
             scanf("%d",&choice);
 
             switch(choice){
@@ -37,33 +35,18 @@ fileToPrint = fopen("Solutions.out","w");
                     main();
                     break;
                 case 2:
-                    copyPuzzle(puzzle, copy);
-                    insertNumberInPozition(puzzle, SizeOfPuzzle);
+                    InsertNumberInPozitionChoice(puzzle, copy, SizeOfPuzzle);
                     break;
                 case 3:
-                    copyPuzzle(puzzle, copy);
-                    randomGeneration(puzzle);
-                    fprintf(fileToPrint,"\tGenerated puzzle is : \n");
-                    printPuzzleInFile(fileToPrint,puzzle,SizeOfPuzzle, " \n");
+                    GenerateRandomPuzzle(puzzle, copy, fileToPrint, SizeOfPuzzle);
                     break;
                 case 4:
-                    if(SolveSudoku(puzzle,fileToPrint) == 1){
-                        ///\ The solution is printed on console display
-                        ///\ printPuzzle(puzzle, SizeOfPuzzle);
-
-                        ///\ The solution is printed on Solutions file !
-                        printPuzzleInFile(fileToPrint, puzzle, SizeOfPuzzle);
-                        fclose(fileToPrint);
-                        printf("\t\t The file was printed check it out !\n");
-                        Sleep(2500);
-                    }
-                    else{
-                        printf("\t\t No solutions ! !\n");
-                        Sleep(3000);
-                    }
+                    printf("\t\tHow much solutions do you want to search : ");
+                    scanf("%d",&numberOfSolutions);
+                    SolvePuzzle(puzzle, fileToPrint, SizeOfPuzzle);
+                    break;
                 case 5:
-                    pastePuzzle(puzzle, copy);
-                    printPuzzle(puzzle, SizeOfPuzzle);
+                    Back(puzzle, copy, SizeOfPuzzle);
                     break;
                 case 6:
                     GameOver = true;
@@ -77,5 +60,5 @@ fileToPrint = fopen("Solutions.out","w");
         }
     }
 
-	return 0;
+	Sleep(3000);
 }

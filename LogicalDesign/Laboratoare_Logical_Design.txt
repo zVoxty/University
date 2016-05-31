@@ -1,0 +1,173 @@
+===================================================
+===================================================
+===================================================
+Tema10
+
+----------------------------------------------------------------------------------
+-- Company: 
+-- Engineer: 
+-- 
+-- Create Date:    18:55:36 04/14/2016 
+-- Design Name: 
+-- Module Name:    tema10sch - Behavioral 
+-- Project Name: 
+-- Target Devices: 
+-- Tool versions: 
+-- Description: 
+--
+-- Dependencies: 
+--
+-- Revision: 
+-- Revision 0.01 - File Created
+-- Additional Comments: 
+--
+----------------------------------------------------------------------------------
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+---- Uncomment the following library declaration if instantiating
+---- any Xilinx primitives in this code.
+--library UNISIM;
+--use UNISIM.VComponents.all;
+
+entity tema10sch is
+    Port ( iClk : in  STD_LOGIC;
+           iClear : in  STD_LOGIC;
+           iData1 : in  STD_LOGIC;
+           iData2 : in  STD_LOGIC;
+           iSelect : in  STD_LOGIC;
+           oQ : out  STD_LOGIC);
+end tema10sch;
+
+architecture Behavioral of tema10sch is
+
+begin
+
+oQ<= '0' when iClear='1' else
+
+	  iData1 when iSelect='0' and falling_edge(iClk) else 
+	  iData2 when iSelect='1' and falling_edge(iClk);
+
+end Behavioral;
+
+===================================================
+===================================================
+===================================================
+
+TEMA 9 
+
+----------------------------------------------------------------------------------
+-- Company: 
+-- Engineer: 
+-- 
+-- Create Date:    19:21:19 04/07/2016 
+-- Design Name: 
+-- Module Name:    tema9sc - Behavioral 
+-- Project Name: 
+-- Target Devices: 
+-- Tool versions: 
+-- Description: 
+--
+-- Dependencies: 
+--
+-- Revision: 
+-- Revision 0.01 - File Created
+-- Additional Comments: 
+--
+----------------------------------------------------------------------------------
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+---- Uncomment the following library declaration if instantiating
+---- any Xilinx primitives in this code.
+--library UNISIM;
+--use UNISIM.VComponents.all;
+
+entity tema9sc is
+    Port ( iaA : in  STD_LOGIC_VECTOR (15 downto 0);
+           oaY : out  STD_LOGIC_VECTOR (15 downto 0);
+           iCn : in  STD_LOGIC);
+end tema9sc;
+
+architecture Behavioral of tema9sc is
+
+begin
+oaY <= not(iaA) when iCn = '0' else
+		 iaA;
+
+end Behavioral;
+
+===================================================
+===================================================
+===================================================
+
+TEMA 8
+
+----------------------------------------------------------------------------------
+-- Company: 
+-- Engineer: 
+-- 
+-- Create Date:    18:57:41 04/07/2016 
+-- Design Name: 
+-- Module Name:    tema8sch - Behavioral 
+-- Project Name: 
+-- Target Devices: 
+-- Tool versions: 
+-- Description: 
+--
+-- Dependencies: 
+--
+-- Revision: 
+-- Revision 0.01 - File Created
+-- Additional Comments: 
+--
+----------------------------------------------------------------------------------
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+---- Uncomment the following library declaration if instantiating
+---- any Xilinx primitives in this code.
+--library UNISIM;
+--use UNISIM.VComponents.all;
+
+entity tema8sch is
+    Port ( iaData : in  STD_LOGIC_VECTOR (15 downto 0);
+           oaCod : out  STD_LOGIC_VECTOR (3 downto 0);
+           oGS : out  STD_LOGIC);
+end tema8sch;
+
+architecture Behavioral of tema8sch is
+
+begin
+oaCod <= "1111" when iaData(15)='0' else
+			"1110" when iaData(14)='0' else
+			"1101" when iaData(13)='0' else
+			"1100" when iaData(12)='0' else
+			"1011" when iaData(11)='0' else
+			"1010" when iaData(10)='0' else
+			"1001" when iaData(9)='0' else
+			"1000" when iaData(8)='0' else
+			"0111" when iaData(7)='0' else
+			"0110" when iaData(6)='0' else
+			"0101" when iaData(5)='0' else
+			"0100" when iaData(4)='0' else
+			"0011" when iaData(3)='0' else
+			"0010" when iaData(2)='0' else
+			"0001" when iaData(1)='0' else
+			"0000" when iaData(0)='0' else
+			"0000";
+oGS <='1' when iaData /= X"FFFF" else '0'; 
+
+end Behavioral;
+
+===================================================
+===================================================
+===================================================
+
+

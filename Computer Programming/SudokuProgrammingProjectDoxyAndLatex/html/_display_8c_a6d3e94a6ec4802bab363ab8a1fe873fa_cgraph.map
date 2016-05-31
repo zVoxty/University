@@ -1,0 +1,5 @@
+<map id="SolvePuzzle" name="SolvePuzzle">
+<area shape="rect" id="node3" href="$_sudoku_solver_8c.html#a293f5b647b84feea43bb245b3b56987e" title="Takes a partially filled&#45;in grid and attempts to assign values to all unassigned locations in such a ..." alt="" coords="158,5,255,32"/>
+<area shape="rect" id="node5" href="$essential_functions_8c.html#a84f997248a88866cd3d6f1f6e53dc643" title="Function which will print puzzle in a file. " alt="" coords="147,56,266,83"/>
+<area shape="rect" id="node7" href="$essential_functions_8c.html#a81a7d2317015b03938b3272ef99df691" title="A function which will determine box size. " alt="" coords="315,56,397,83"/>
+</map>

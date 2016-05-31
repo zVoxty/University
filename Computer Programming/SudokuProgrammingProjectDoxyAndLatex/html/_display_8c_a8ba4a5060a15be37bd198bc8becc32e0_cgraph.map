@@ -1,0 +1,7 @@
+<map id="InsertNumberInPozitionChoice" name="InsertNumberInPozitionChoice">
+<area shape="rect" id="node3" href="$essential_functions_8c.html#a8eaeede37db53451c87add11896a43c3" title="A function to BackUp the puzzle. " alt="" coords="284,5,375,32"/>
+<area shape="rect" id="node5" href="$essential_functions_8c.html#a2b46b0b3b333036eb4dd2b48a3970f24" title="Function which will insert number in specificated position. " alt="" coords="251,56,407,83"/>
+<area shape="rect" id="node7" href="$_display_8c.html#a8cc9a674e9251c1094cb42a4b272e94d" title="Generate intro interface. " alt="" coords="477,31,523,57"/>
+<area shape="rect" id="node9" href="$essential_functions_8c.html#a74781138af78b469b526516a39b53959" title="Function which will print puzzle. " alt="" coords="457,81,543,108"/>
+<area shape="rect" id="node11" href="$essential_functions_8c.html#a81a7d2317015b03938b3272ef99df691" title="A function which will determine box size. " alt="" coords="592,81,675,108"/>
+</map>
