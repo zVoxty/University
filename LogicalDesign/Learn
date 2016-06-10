@@ -99,6 +99,94 @@ begin
 end Behavioral;
 ===========================================================================================
 ===========================================================================================
+RECUNOSCATOR FRECVENTA DINAMIC 010101 = 1 Model Mealy else 0 
+===========================================================================================
 
+----------------------------------------------------------------------------------
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
+---- Uncomment the following library declaration if instantiating
+---- any Xilinx primitives in this code.
+--library UNISIM;
+--use UNISIM.VComponents.all;
+
+entity code is
+	Port( iClk : in STD_LOGIC;
+	      iD :  in STD_LOGIC;
+	      iINITL: in STD_LOGIC;
+	      oRecunoscut : out STD_LOGIC);
+end code;
+
+architecture Behavioral of code is
+	signal saStare_prezenta, saStare_urmatoare : STD_LOGIC_VECTOR(2 downto 0);
+begin
+	saStare_urmatoare <= "001" when (saStare_prezenta = "000" and iD = '0') else
+			     "000" when (saStare_prezenta = "000" and iD = '1') else
+			     "001" when (saStare_prezenta = "001" and iD = '0') else
+			     "010" when (saStare_prezenta = "001" and iD = '1') else
+			     "011" when (saStare_prezenta = "010" and iD = '0') else
+			     "000" when (saStare_prezenta = "010" and iD = '1') else
+			     "001" when (saStare_prezenta = "011" and iD = '0') else
+			     "100" when (saStare_prezenta = "011" and iD = '1') else
+			     "101" when (saStare_prezenta = "100" and iD = '0') else
+			     "000" when (saStare_prezenta = "100" and iD = '1') else
+			     "001" when (saStare_prezenta = "101" and iD = '0') else
+			     "100" when (saStare_prezenta = "101" and iD = '1') else
+			     "000";
+	saStare_prezenta <= "000" when (iINITL = '0')else
+			    saStare_urmatoare when (rising_edge(iClk));
+	oRecunoscut <= '1' when (saStare_prezenta = "101" and iD = '1')else
+		       '0';
+			
+end Behavioral;
+===========================================================================================
+===========================================================================================
+RECUNOSCATOR FRECVENTA DINAMIC 010101 = 1 Model MOORE else 0 
+===========================================================================================
+
+----------------------------------------------------------------------------------
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+---- Uncomment the following library declaration if instantiating
+---- any Xilinx primitives in this code.
+--library UNISIM;
+--use UNISIM.VComponents.all;
+
+entity code is
+	Port( iClk : in STD_LOGIC;
+	      iD :  in STD_LOGIC;
+	      iINITL: in STD_LOGIC;
+	      oRecunoscut : out STD_LOGIC);
+end code;
+
+architecture Behavioral of code is
+	signal saStare_prezenta, saStare_urmatoare : STD_LOGIC_VECTOR(2 downto 0);
+begin
+	saStare_urmatoare <= "001" when (saStare_prezenta = "000" and iD = '0') else
+			     "000" when (saStare_prezenta = "000" and iD = '1') else
+			     "001" when (saStare_prezenta = "001" and iD = '0') else
+			     "010" when (saStare_prezenta = "001" and iD = '1') else
+			     "011" when (saStare_prezenta = "010" and iD = '0') else
+			     "000" when (saStare_prezenta = "010" and iD = '1') else
+			     "001" when (saStare_prezenta = "011" and iD = '0') else
+			     "100" when (saStare_prezenta = "011" and iD = '1') else
+			     "101" when (saStare_prezenta = "100" and iD = '0') else
+			     "000" when (saStare_prezenta = "100" and iD = '1') else
+			     "001" when (saStare_prezenta = "101" and iD = '0') else
+			     "110" when (saStare_prezenta = "101" and iD = '1') else
+			     "101" when (saStare_prezenta = "110" and iD = '0') else
+			     "000" when (saStare_prezenta = "110" and iD = '1') else
+			     "000";
+	saStare_prezenta <= "000" when (iINITL = '0')else
+			    saStare_urmatoare when (rising_edge(iClk));
+	oRecunoscut <= '1' when (saStare_prezenta = "110")else
+		       '0';
+			
+end Behavioral;
 
