@@ -1,0 +1,7 @@
+﻿  Source.cpp
+c:\users\user\documents\visual studio 2015\projects\complex numbers\complex numbers\source.cpp(13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\user\documents\visual studio 2015\projects\complex numbers\complex numbers\source.cpp(34): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\documents\visual studio 2015\projects\complex numbers\complex numbers\source.cpp(41): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\documents\visual studio 2015\projects\complex numbers\complex numbers\source.cpp(56): warning C4018: '<': signed/unsigned mismatch
+  Complex Numbers.vcxproj -> C:\Users\User\documents\visual studio 2015\Projects\Complex Numbers\Debug\Complex Numbers.exe
+  Complex Numbers.vcxproj -> C:\Users\User\documents\visual studio 2015\Projects\Complex Numbers\Debug\Complex Numbers.pdb (Full PDB)

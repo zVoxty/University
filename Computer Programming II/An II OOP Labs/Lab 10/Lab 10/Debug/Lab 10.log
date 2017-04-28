@@ -1,6 +1,0 @@
-﻿  Source.cpp
-c:\users\user\documents\visual studio 2015\projects\lab 10\lab 10\source.cpp(10): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Banca.cpp
-  Generating Code...
-  Lab 10.vcxproj -> c:\users\user\documents\visual studio 2015\Projects\Lab 10\Debug\Lab 10.exe
-  Lab 10.vcxproj -> c:\users\user\documents\visual studio 2015\Projects\Lab 10\Debug\Lab 10.pdb (Full PDB)

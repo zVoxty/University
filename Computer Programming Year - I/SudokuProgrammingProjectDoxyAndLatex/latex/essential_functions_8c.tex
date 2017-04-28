@@ -1,0 +1,329 @@
+\section{essential\+Functions.\+c File Reference}
+\label{essential_functions_8c}\index{essential\+Functions.\+c@{essential\+Functions.\+c}}
+{\ttfamily \#include \char`\"{}sudoku.\+h\char`\"{}}\\*
+Include dependency graph for essential\+Functions.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{essential_functions_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int {\bf box\+Length} (int {\bf Size\+Of\+Puzzle})
+\begin{DoxyCompactList}\small\item\em A function which will determine box size. \end{DoxyCompactList}\item 
+void {\bf copy\+Puzzle} (int puzzle[{\bf Size\+Of\+Puzzle}][{\bf Size\+Of\+Puzzle}], int copy[{\bf Size\+Of\+Puzzle}][{\bf Size\+Of\+Puzzle}])
+\begin{DoxyCompactList}\small\item\em A function to Back\+Up the puzzle. \end{DoxyCompactList}\item 
+void {\bf paste\+Puzzle} (int puzzle[{\bf Size\+Of\+Puzzle}][{\bf Size\+Of\+Puzzle}], int copy[{\bf Size\+Of\+Puzzle}][{\bf Size\+Of\+Puzzle}])
+\begin{DoxyCompactList}\small\item\em An another function to Back\+Up the puzzle. \end{DoxyCompactList}\item 
+void {\bf print\+Puzzle} (int puzzle[{\bf Size\+Of\+Puzzle}][{\bf Size\+Of\+Puzzle}], int {\bf Size\+Of\+Puzzle})
+\begin{DoxyCompactList}\small\item\em Function which will print puzzle. \end{DoxyCompactList}\item 
+void {\bf print\+Puzzle\+In\+File} (F\+I\+LE $\ast$filename, int puzzle[{\bf Size\+Of\+Puzzle}][{\bf Size\+Of\+Puzzle}], int {\bf Size\+Of\+Puzzle})
+\begin{DoxyCompactList}\small\item\em Function which will print puzzle in a file. \end{DoxyCompactList}\item 
+void {\bf insert\+Number\+In\+Pozition} (int puzzle[{\bf Size\+Of\+Puzzle}][{\bf Size\+Of\+Puzzle}], int {\bf Size\+Of\+Puzzle})
+\begin{DoxyCompactList}\small\item\em Function which will insert number in specificated position. \end{DoxyCompactList}\item 
+int {\bf Ask} ()
+\begin{DoxyCompactList}\small\item\em Ask function as well as it\textquotesingle{}s called just ask user which will be the size of puzzle. \end{DoxyCompactList}\item 
+int {\bf counter} (int puzzle[{\bf Size\+Of\+Puzzle}][{\bf Size\+Of\+Puzzle}])
+\begin{DoxyCompactList}\small\item\em Counter function will return how many numbers shoud be finded in our sudoku puzzle. \end{DoxyCompactList}\item 
+$\ast$param file Data file $\ast$bool {\bf Open\+Files} (F\+I\+LE $\ast$file)
+\begin{DoxyCompactList}\small\item\em A function which will check if file is open. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{essential\+Functions.\+c@{essential\+Functions.\+c}!Ask@{Ask}}
+\index{Ask@{Ask}!essential\+Functions.\+c@{essential\+Functions.\+c}}
+\subsubsection[{Ask()}]{\setlength{\rightskip}{0pt plus 5cm}int Ask (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{essential_functions_8c_a77b57b60f97f45e6e20286d7aa4b01ed}
+
+
+Ask function as well as it\textquotesingle{}s called just ask user which will be the size of puzzle. 
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=188pt]{essential_functions_8c_a77b57b60f97f45e6e20286d7aa4b01ed_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{essential\+Functions.\+c@{essential\+Functions.\+c}!box\+Length@{box\+Length}}
+\index{box\+Length@{box\+Length}!essential\+Functions.\+c@{essential\+Functions.\+c}}
+\subsubsection[{box\+Length(int Size\+Of\+Puzzle)}]{\setlength{\rightskip}{0pt plus 5cm}int box\+Length (
+\begin{DoxyParamCaption}
+\item[{int}]{Size\+Of\+Puzzle}
+\end{DoxyParamCaption}
+)}\label{essential_functions_8c_a81a7d2317015b03938b3272ef99df691}
+
+
+A function which will determine box size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Size\+Of\+Puzzle} & Puzzle Size \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{essential_functions_8c_a81a7d2317015b03938b3272ef99df691_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{essential\+Functions.\+c@{essential\+Functions.\+c}!copy\+Puzzle@{copy\+Puzzle}}
+\index{copy\+Puzzle@{copy\+Puzzle}!essential\+Functions.\+c@{essential\+Functions.\+c}}
+\subsubsection[{copy\+Puzzle(int puzzle[Size\+Of\+Puzzle][Size\+Of\+Puzzle], int copy[Size\+Of\+Puzzle][Size\+Of\+Puzzle])}]{\setlength{\rightskip}{0pt plus 5cm}void copy\+Puzzle (
+\begin{DoxyParamCaption}
+\item[{int}]{puzzle[\+Size\+Of\+Puzzle][\+Size\+Of\+Puzzle], }
+\item[{int}]{copy[\+Size\+Of\+Puzzle][\+Size\+Of\+Puzzle]}
+\end{DoxyParamCaption}
+)}\label{essential_functions_8c_a8eaeede37db53451c87add11896a43c3}
+
+
+A function to Back\+Up the puzzle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em puzzle} & The respective puzzle \\
+\hline
+{\em copy\+Of\+Puzzle} & \\
+\hline
+\end{DoxyParams}
+Store the matrix into other matrix. 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{essential_functions_8c_a8eaeede37db53451c87add11896a43c3_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{essential\+Functions.\+c@{essential\+Functions.\+c}!counter@{counter}}
+\index{counter@{counter}!essential\+Functions.\+c@{essential\+Functions.\+c}}
+\subsubsection[{counter(int puzzle[Size\+Of\+Puzzle][Size\+Of\+Puzzle])}]{\setlength{\rightskip}{0pt plus 5cm}int counter (
+\begin{DoxyParamCaption}
+\item[{int}]{puzzle[\+Size\+Of\+Puzzle][\+Size\+Of\+Puzzle]}
+\end{DoxyParamCaption}
+)}\label{essential_functions_8c_aef6fed37e953a394086142cbd93bb2ad}
+
+
+Counter function will return how many numbers shoud be finded in our sudoku puzzle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em puzzle} & The respective puzzle \\
+\hline
+{\em Size\+Of\+Puzzle} & Puzzle Size \\
+\hline
+\end{DoxyParams}
+Declare a counter.
+
+Increase counter when pozition is not equal to 0.
+
+Return counter value. 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{essential_functions_8c_aef6fed37e953a394086142cbd93bb2ad_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{essential\+Functions.\+c@{essential\+Functions.\+c}!insert\+Number\+In\+Pozition@{insert\+Number\+In\+Pozition}}
+\index{insert\+Number\+In\+Pozition@{insert\+Number\+In\+Pozition}!essential\+Functions.\+c@{essential\+Functions.\+c}}
+\subsubsection[{insert\+Number\+In\+Pozition(int puzzle[Size\+Of\+Puzzle][Size\+Of\+Puzzle], int Size\+Of\+Puzzle)}]{\setlength{\rightskip}{0pt plus 5cm}void insert\+Number\+In\+Pozition (
+\begin{DoxyParamCaption}
+\item[{int}]{puzzle[\+Size\+Of\+Puzzle][\+Size\+Of\+Puzzle], }
+\item[{int}]{Size\+Of\+Puzzle}
+\end{DoxyParamCaption}
+)}\label{essential_functions_8c_a2b46b0b3b333036eb4dd2b48a3970f24}
+
+
+Function which will insert number in specificated position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em puzzle} & The respective puzzle \\
+\hline
+{\em Size\+Of\+Puzzle} & Puzzle Size \\
+\hline
+\end{DoxyParams}
+Use clear tool to delete the console 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{essential_functions_8c_a2b46b0b3b333036eb4dd2b48a3970f24_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{essential_functions_8c_a2b46b0b3b333036eb4dd2b48a3970f24_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{essential\+Functions.\+c@{essential\+Functions.\+c}!Open\+Files@{Open\+Files}}
+\index{Open\+Files@{Open\+Files}!essential\+Functions.\+c@{essential\+Functions.\+c}}
+\subsubsection[{Open\+Files(\+F\+I\+L\+E $\ast$file)}]{\setlength{\rightskip}{0pt plus 5cm}$\ast$ param file Data file$\ast$ bool Open\+Files (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{file}
+\end{DoxyParamCaption}
+)}\label{essential_functions_8c_afc30d97895c3f10282eb85a19c227899}
+
+
+A function which will check if file is open. 
+
+\index{essential\+Functions.\+c@{essential\+Functions.\+c}!paste\+Puzzle@{paste\+Puzzle}}
+\index{paste\+Puzzle@{paste\+Puzzle}!essential\+Functions.\+c@{essential\+Functions.\+c}}
+\subsubsection[{paste\+Puzzle(int puzzle[Size\+Of\+Puzzle][Size\+Of\+Puzzle], int copy[Size\+Of\+Puzzle][Size\+Of\+Puzzle])}]{\setlength{\rightskip}{0pt plus 5cm}void paste\+Puzzle (
+\begin{DoxyParamCaption}
+\item[{int}]{puzzle[\+Size\+Of\+Puzzle][\+Size\+Of\+Puzzle], }
+\item[{int}]{copy[\+Size\+Of\+Puzzle][\+Size\+Of\+Puzzle]}
+\end{DoxyParamCaption}
+)}\label{essential_functions_8c_a78da4b00eb64cd00dc98f7015e13532b}
+
+
+An another function to Back\+Up the puzzle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em puzzle} & The respective puzzle \\
+\hline
+{\em copy\+Of\+Puzzle} & \\
+\hline
+\end{DoxyParams}
+Assign the backup values to puzzle. 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{essential_functions_8c_a78da4b00eb64cd00dc98f7015e13532b_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{essential\+Functions.\+c@{essential\+Functions.\+c}!print\+Puzzle@{print\+Puzzle}}
+\index{print\+Puzzle@{print\+Puzzle}!essential\+Functions.\+c@{essential\+Functions.\+c}}
+\subsubsection[{print\+Puzzle(int puzzle[Size\+Of\+Puzzle][Size\+Of\+Puzzle], int Size\+Of\+Puzzle)}]{\setlength{\rightskip}{0pt plus 5cm}void print\+Puzzle (
+\begin{DoxyParamCaption}
+\item[{int}]{puzzle[\+Size\+Of\+Puzzle][\+Size\+Of\+Puzzle], }
+\item[{int}]{Size\+Of\+Puzzle}
+\end{DoxyParamCaption}
+)}\label{essential_functions_8c_a74781138af78b469b526516a39b53959}
+
+
+Function which will print puzzle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em puzzle} & The respective puzzle \\
+\hline
+{\em Size\+Of\+Puzzle} & Puzzle Size \\
+\hline
+\end{DoxyParams}
+Get length of box.
+
+Generate print interface. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{essential_functions_8c_a74781138af78b469b526516a39b53959_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{essential_functions_8c_a74781138af78b469b526516a39b53959_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{essential\+Functions.\+c@{essential\+Functions.\+c}!print\+Puzzle\+In\+File@{print\+Puzzle\+In\+File}}
+\index{print\+Puzzle\+In\+File@{print\+Puzzle\+In\+File}!essential\+Functions.\+c@{essential\+Functions.\+c}}
+\subsubsection[{print\+Puzzle\+In\+File(\+F\+I\+L\+E $\ast$filename, int puzzle[Size\+Of\+Puzzle][Size\+Of\+Puzzle], int Size\+Of\+Puzzle)}]{\setlength{\rightskip}{0pt plus 5cm}void print\+Puzzle\+In\+File (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{filename, }
+\item[{int}]{puzzle[\+Size\+Of\+Puzzle][\+Size\+Of\+Puzzle], }
+\item[{int}]{Size\+Of\+Puzzle}
+\end{DoxyParamCaption}
+)}\label{essential_functions_8c_a84f997248a88866cd3d6f1f6e53dc643}
+
+
+Function which will print puzzle in a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Data file \\
+\hline
+{\em puzzle} & The respective puzzle \\
+\hline
+{\em Size\+Of\+Puzzle} & Puzzle Size \\
+\hline
+\end{DoxyParams}
+Get length of box.
+
+Generate print interface. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=268pt]{essential_functions_8c_a84f997248a88866cd3d6f1f6e53dc643_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{essential_functions_8c_a84f997248a88866cd3d6f1f6e53dc643_icgraph}
+\end{center}
+\end{figure}
+
+

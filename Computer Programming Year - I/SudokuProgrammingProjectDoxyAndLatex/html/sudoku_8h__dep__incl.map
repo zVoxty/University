@@ -1,0 +1,7 @@
+<map id="sudoku.h" name="sudoku.h">
+<area shape="rect" id="node3" href="$_display_8c.html" title="Display.c" alt="" coords="5,80,80,107"/>
+<area shape="rect" id="node5" href="$essential_functions_8c.html" title="essentialFunctions.c" alt="" coords="105,80,247,107"/>
+<area shape="rect" id="node7" href="$_generate_sudoku_puzzle_8c.html" title="GenerateSudokuPuzzle.c" alt="" coords="272,80,443,107"/>
+<area shape="rect" id="node9" href="$main_8c.html" title="main.c" alt="" coords="467,80,528,107"/>
+<area shape="rect" id="node11" href="$_sudoku_solver_8c.html" title="SudokuSolver.c" alt="" coords="552,80,664,107"/>
+</map>

@@ -1,7 +1,0 @@
-﻿  Source.cpp
-c:\users\user\documents\visual studio 2015\projects\lab 9\lab 9\matrix.h(40): warning C4018: '<': signed/unsigned mismatch
-  c:\users\user\documents\visual studio 2015\projects\lab 9\lab 9\matrix.h(38): note: while compiling class template member function 'void Sort<Matrix>::Print(void)'
-  c:\users\user\documents\visual studio 2015\projects\lab 9\lab 9\source.cpp(33): note: see reference to function template instantiation 'void Sort<Matrix>::Print(void)' being compiled
-  c:\users\user\documents\visual studio 2015\projects\lab 9\lab 9\source.cpp(31): note: see reference to class template instantiation 'Sort<Matrix>' being compiled
-  Lab 9.vcxproj -> C:\Users\User\Documents\Visual Studio 2015\Projects\Lab 9\Debug\Lab 9.exe
-  Lab 9.vcxproj -> C:\Users\User\Documents\Visual Studio 2015\Projects\Lab 9\Debug\Lab 9.pdb (Full PDB)

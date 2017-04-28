@@ -1,0 +1,273 @@
+\section{Display.\+c File Reference}
+\label{_display_8c}\index{Display.\+c@{Display.\+c}}
+{\ttfamily \#include \char`\"{}sudoku.\+h\char`\"{}}\\*
+Include dependency graph for Display.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{_display_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf Intro} ()
+\begin{DoxyCompactList}\small\item\em Generate intro interface. \end{DoxyCompactList}\item 
+void {\bf Chose\+Options} ()
+\begin{DoxyCompactList}\small\item\em Generate chose options interface for switch . \end{DoxyCompactList}\item 
+void {\bf Back} (int puzzle, int copy, int {\bf Size\+Of\+Puzzle})
+\begin{DoxyCompactList}\small\item\em Call back-\/up of last puzzle. \end{DoxyCompactList}\item 
+void {\bf Insert\+Number\+In\+Pozition\+Choice} (int puzzle, int copy, int {\bf Size\+Of\+Puzzle})
+\begin{DoxyCompactList}\small\item\em Insert number in pozition at your choice ! \end{DoxyCompactList}\item 
+void {\bf Generate\+Random\+Puzzle} (int puzzle, int copy, F\+I\+LE $\ast$name\+Of\+File, int {\bf Size\+Of\+Puzzle})
+\begin{DoxyCompactList}\small\item\em Generate puzzle. \end{DoxyCompactList}\item 
+void {\bf Solve\+Puzzle} (int puzzle, F\+I\+LE $\ast$file\+To\+Print, int {\bf Size\+Of\+Puzzle})
+\begin{DoxyCompactList}\small\item\em A function which will call solving parts to solve the puzzle ! \end{DoxyCompactList}\item 
+void {\bf Ask\+Size} (int {\bf Size\+Of\+Puzzle}, int puzzle)
+\begin{DoxyCompactList}\small\item\em Ask for size of puzzle . \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{Display.\+c@{Display.\+c}!Ask\+Size@{Ask\+Size}}
+\index{Ask\+Size@{Ask\+Size}!Display.\+c@{Display.\+c}}
+\subsubsection[{Ask\+Size(int Size\+Of\+Puzzle, int puzzle)}]{\setlength{\rightskip}{0pt plus 5cm}void Ask\+Size (
+\begin{DoxyParamCaption}
+\item[{int}]{Size\+Of\+Puzzle, }
+\item[{int}]{puzzle}
+\end{DoxyParamCaption}
+)}\label{_display_8c_a24f742529f237af6fdbcf8ed04f07be9}
+
+
+Ask for size of puzzle . 
+
+
+\begin{DoxyParams}{Parameters}
+{\em puzzle} & The respective puzzle \\
+\hline
+{\em Size\+Of\+Puzzle} & Puzzle size. \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{_display_8c_a24f742529f237af6fdbcf8ed04f07be9_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{_display_8c_a24f742529f237af6fdbcf8ed04f07be9_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Display.\+c@{Display.\+c}!Back@{Back}}
+\index{Back@{Back}!Display.\+c@{Display.\+c}}
+\subsubsection[{Back(int puzzle, int copy, int Size\+Of\+Puzzle)}]{\setlength{\rightskip}{0pt plus 5cm}void Back (
+\begin{DoxyParamCaption}
+\item[{int}]{puzzle, }
+\item[{int}]{copy, }
+\item[{int}]{Size\+Of\+Puzzle}
+\end{DoxyParamCaption}
+)}\label{_display_8c_a715f37ae3e08e5f6d3e95eb5f4d8adc3}
+
+
+Call back-\/up of last puzzle. 
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{_display_8c_a715f37ae3e08e5f6d3e95eb5f4d8adc3_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=194pt]{_display_8c_a715f37ae3e08e5f6d3e95eb5f4d8adc3_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Display.\+c@{Display.\+c}!Chose\+Options@{Chose\+Options}}
+\index{Chose\+Options@{Chose\+Options}!Display.\+c@{Display.\+c}}
+\subsubsection[{Chose\+Options()}]{\setlength{\rightskip}{0pt plus 5cm}void Chose\+Options (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{_display_8c_ab972c0e63449ab0cbfed7cdcc3d3f534}
+
+
+Generate chose options interface for switch . 
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{_display_8c_ab972c0e63449ab0cbfed7cdcc3d3f534_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Display.\+c@{Display.\+c}!Generate\+Random\+Puzzle@{Generate\+Random\+Puzzle}}
+\index{Generate\+Random\+Puzzle@{Generate\+Random\+Puzzle}!Display.\+c@{Display.\+c}}
+\subsubsection[{Generate\+Random\+Puzzle(int puzzle, int copy, F\+I\+L\+E $\ast$name\+Of\+File, int Size\+Of\+Puzzle)}]{\setlength{\rightskip}{0pt plus 5cm}void Generate\+Random\+Puzzle (
+\begin{DoxyParamCaption}
+\item[{int}]{puzzle, }
+\item[{int}]{copy, }
+\item[{F\+I\+LE $\ast$}]{name\+Of\+File, }
+\item[{int}]{Size\+Of\+Puzzle}
+\end{DoxyParamCaption}
+)}\label{_display_8c_ae19873683ff86a7e6f531517e9eb079b}
+
+
+Generate puzzle. 
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_display_8c_ae19873683ff86a7e6f531517e9eb079b_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{_display_8c_ae19873683ff86a7e6f531517e9eb079b_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Display.\+c@{Display.\+c}!Insert\+Number\+In\+Pozition\+Choice@{Insert\+Number\+In\+Pozition\+Choice}}
+\index{Insert\+Number\+In\+Pozition\+Choice@{Insert\+Number\+In\+Pozition\+Choice}!Display.\+c@{Display.\+c}}
+\subsubsection[{Insert\+Number\+In\+Pozition\+Choice(int puzzle, int copy, int Size\+Of\+Puzzle)}]{\setlength{\rightskip}{0pt plus 5cm}void Insert\+Number\+In\+Pozition\+Choice (
+\begin{DoxyParamCaption}
+\item[{int}]{puzzle, }
+\item[{int}]{copy, }
+\item[{int}]{Size\+Of\+Puzzle}
+\end{DoxyParamCaption}
+)}\label{_display_8c_a8ba4a5060a15be37bd198bc8becc32e0}
+
+
+Insert number in pozition at your choice ! 
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_display_8c_a8ba4a5060a15be37bd198bc8becc32e0_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{_display_8c_a8ba4a5060a15be37bd198bc8becc32e0_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Display.\+c@{Display.\+c}!Intro@{Intro}}
+\index{Intro@{Intro}!Display.\+c@{Display.\+c}}
+\subsubsection[{Intro()}]{\setlength{\rightskip}{0pt plus 5cm}void Intro (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{_display_8c_a8cc9a674e9251c1094cb42a4b272e94d}
+
+
+Generate intro interface. 
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_display_8c_a8cc9a674e9251c1094cb42a4b272e94d_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Display.\+c@{Display.\+c}!Solve\+Puzzle@{Solve\+Puzzle}}
+\index{Solve\+Puzzle@{Solve\+Puzzle}!Display.\+c@{Display.\+c}}
+\subsubsection[{Solve\+Puzzle(int puzzle, F\+I\+L\+E $\ast$file\+To\+Print, int Size\+Of\+Puzzle)}]{\setlength{\rightskip}{0pt plus 5cm}void Solve\+Puzzle (
+\begin{DoxyParamCaption}
+\item[{int}]{puzzle, }
+\item[{F\+I\+LE $\ast$}]{file\+To\+Print, }
+\item[{int}]{Size\+Of\+Puzzle}
+\end{DoxyParamCaption}
+)}\label{_display_8c_a6d3e94a6ec4802bab363ab8a1fe873fa}
+
+
+A function which will call solving parts to solve the puzzle ! 
+
+The solution is printed on console display. /$\ast$$\ast$ Generate print interface.
+
+\textbackslash{} print\+Puzzle(puzzle, Size\+Of\+Puzzle);
+
+\textbackslash{} The solution is printed on Solutions file ! 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_display_8c_a6d3e94a6ec4802bab363ab8a1fe873fa_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{_display_8c_a6d3e94a6ec4802bab363ab8a1fe873fa_icgraph}
+\end{center}
+\end{figure}
+
+

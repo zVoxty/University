@@ -1,6 +1,0 @@
-<map id="existsCol" name="existsCol">
-<area shape="rect" id="node3" href="$_generate_sudoku_puzzle_8c.html#a267a6d32821d62a5184da4855cb03091" title="Give permission to insert value in primary matrix. " alt="" coords="131,5,221,32"/>
-<area shape="rect" id="node5" href="$_generate_sudoku_puzzle_8c.html#a6a49f0a7a0398f2659d6642120ea48dc" title="There is Generation algorithm of our Sudoku puzzle, it is a simple generation using backtracking meth..." alt="" coords="269,5,397,32"/>
-<area shape="rect" id="node7" href="$_display_8c.html#ae19873683ff86a7e6f531517e9eb079b" title="Generate puzzle. " alt="" coords="445,5,608,32"/>
-<area shape="rect" id="node9" href="$main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="656,5,707,32"/>
-</map>

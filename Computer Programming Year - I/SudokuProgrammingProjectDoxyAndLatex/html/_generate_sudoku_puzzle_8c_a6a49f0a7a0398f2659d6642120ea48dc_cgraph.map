@@ -1,0 +1,8 @@
+<map id="randomGeneration" name="randomGeneration">
+<area shape="rect" id="node3" href="$_generate_sudoku_puzzle_8c.html#a267a6d32821d62a5184da4855cb03091" title="Give permission to insert value in primary matrix. " alt="" coords="182,81,271,108"/>
+<area shape="rect" id="node13" href="$essential_functions_8c.html#aef6fed37e953a394086142cbd93bb2ad" title="Counter function will return how many numbers shoud be finded in our sudoku puzzle. " alt="" coords="194,132,259,159"/>
+<area shape="rect" id="node5" href="$essential_functions_8c.html#a81a7d2317015b03938b3272ef99df691" title="A function which will determine box size. " alt="" coords="320,5,403,32"/>
+<area shape="rect" id="node7" href="$_generate_sudoku_puzzle_8c.html#a3d79c9c1f77209505ee449e8c6bc5ab2" title="There is Generation algorithm of our Sudoku puzzle, it is a simple generation using backtracking meth..." alt="" coords="320,56,403,83"/>
+<area shape="rect" id="node9" href="$_generate_sudoku_puzzle_8c.html#aed140ba5f01d4c8cf24ad69b22a700d8" title="Function which will check if the value exist on actual Column . " alt="" coords="323,107,399,133"/>
+<area shape="rect" id="node11" href="$_generate_sudoku_puzzle_8c.html#abf81a768e692f635d7c0dd855240921a" title="Function which will check if the value exist on actual box . " alt="" coords="321,157,401,184"/>
+</map>
