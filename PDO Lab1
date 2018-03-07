@@ -1,1 +1,56 @@
 
+#include <iostream>
+#include <mutex>
+#include <thread>
+#include <queue>
+#include <Windows.h>
+#include <stdio.h>
+
+using namespace std;
+
+std::queue<int> myqu;
+std::mutex queueMutex;
+
+void prod() {
+	while (true) {
+		Sleep(1000);
+
+		std::lock_guard<std::mutex> guard(queueMutex);
+		int x = rand() % 10;
+		cout << "Producer " << x << endl;
+		myqu.push(x);
+	}
+}
+
+void cons() {
+
+	while (true) {
+
+		if (myqu.empty())
+			continue;
+
+		int x = myqu.back();
+
+		std::lock_guard<std::mutex> guard(queueMutex);
+		myqu.pop();
+		cout << "Consumed " << x << endl;
+	}
+
+}
+
+
+int main() {
+
+	srand(time(NULL));
+
+	std::queue<int> queue;
+
+	thread producer(prod);
+	thread consumer(cons);
+
+	producer.join();
+	consumer.join();
+
+	Sleep(5000);
+	return 0;
+}
