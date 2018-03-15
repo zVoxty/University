@@ -1,0 +1,113 @@
+#include <iostream>
+#include <mutex>
+#include <condition_variable>
+#include <thread>
+#include <queue>
+#include <Windows.h>
+#include <stdio.h>
+
+using namespace std;
+
+std::queue<int> myqu;
+std::mutex queueMutex;
+
+std::condition_variable condProd;
+std::condition_variable condCons;
+
+HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+int a = 1;
+int loops = 20;
+
+class Semaphore {
+public:
+	Semaphore(int count_ = 0)
+		: count(count_) {}
+
+	inline void up()
+	{
+		std::unique_lock<std::mutex> lock(mtx);
+		count++;
+		cv.notify_one();
+	}
+
+	inline void down()
+	{
+		std::unique_lock<std::mutex> lock(mtx);
+		while (count == 0) {
+			cv.wait(lock);
+		}
+		count--;
+	}
+
+private:
+	std::mutex mtx;
+	std::condition_variable cv;
+	int count;
+};
+
+void prod() {
+	while (loops--)
+	{
+		a++;
+
+		std::unique_lock<std::mutex> lock(queueMutex);
+		while (myqu.size() == 5)
+		{
+			condProd.wait(lock);
+		}
+		SetConsoleTextAttribute(hConsole, 8);
+		cout << "Produc " << a << endl;
+		Sleep(1000);
+		myqu.push(a);
+
+		lock.unlock();
+
+		SetConsoleTextAttribute(hConsole, 8);
+		cout << "Am produs " << a << endl;
+
+		condCons.notify_all();
+	}
+}
+
+void cons() {
+	int x = 0;
+	while (true) {
+		std::unique_lock<std::mutex> lock(queueMutex);
+		while (myqu.empty())
+		{
+			condCons.wait(lock);
+		}
+		SetConsoleTextAttribute(hConsole, 10);
+		cout << "Preiau produs" << endl;
+		Sleep(200);
+		x = myqu.front();
+		myqu.pop();
+		SetConsoleTextAttribute(hConsole, 10);
+		cout << "Am preluat " << x << endl;
+		condProd.notify_all();
+		lock.unlock();
+		SetConsoleTextAttribute(hConsole, 10);
+		cout << "Incep sa consum " << x << endl;
+		Sleep(1200);
+		SetConsoleTextAttribute(hConsole, 10);
+		cout << "Am consumat " << x << endl;
+	}
+}
+
+int main() {
+
+	srand(time(NULL));
+	std::queue<int> queue;
+
+	thread producer(prod);
+	thread consumer(cons);
+
+	producer.join();
+	consumer.join();
+
+
+	Sleep(9999999999);
+	return 0;
+
+}
