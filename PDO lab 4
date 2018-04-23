@@ -1,0 +1,147 @@
+//#include<iostream>
+//#include <mpi.h>
+//#include <windows.h>
+//
+//using namespace std;
+//int MAX_SIZE = 10;
+//int *x = new int[MAX_SIZE];
+//int *y = new int[MAX_SIZE];
+//int *avg = NULL;
+//
+//void print(int *arr, int size)
+//{
+//	for (int i = 0; i < size; i++)
+//	{
+//		cout << arr[i] << "\n";
+//	}
+//}
+//
+//int sum = 0;
+//
+//int Sum(int *arr, int sz)
+//{
+//	int x = 0;
+//	for (int i = 0; i < sz; i++)
+//	{
+//		x += arr[i];
+//	}
+//	return x;
+//}
+//
+//void main(int argc, char *argv[]) {
+//
+//	int rank, size;
+//
+//	MPI_Init(&argc, &argv);
+//
+//	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+//
+//	MPI_Comm_size(MPI_COMM_WORLD, &size);
+//
+//	if (rank == 0)
+//	{
+//		//fill x with values
+//		for (int i = 0; i < MAX_SIZE; i++)
+//		{
+//			x[i] = i + 1;
+//		}
+//		cout << "X\n";
+//		print(x, MAX_SIZE);
+//		avg = new int[size];
+//	}
+//
+//	int valuesPerProcess = MAX_SIZE / size;
+//
+//	MPI_Scatter(x, valuesPerProcess, MPI_INT, y, valuesPerProcess, MPI_INT, 0, MPI_COMM_WORLD);
+//
+//
+//	cout << "Process # " << rank << "\t size is " << size << "\n";
+//
+//	cout << "Y\n";
+//	print(y, valuesPerProcess);
+//
+//	int s = Sum(y, valuesPerProcess);
+//
+//	//MPI_Gather(&s,1,MPI_INT,avg,1,MPI_INT,0,MPI_COMM_WORLD);
+//	//MPI_Reduce(&s, &sum, 1, MPI_INT, MPI_SUM,0, MPI_COMM_WORLD);
+//	MPI_Allreduce(&s, &sum, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
+//
+//
+//	cout << "partial sum = " << s << "\n";
+//
+//	cout << "Final Total sum = " << sum << "\n";
+//
+//	MPI_Finalize();
+//
+//	Sleep(1000000);
+//
+//}
+
+
+
+#include<iostream>
+#include <mpi.h>
+#include <windows.h>
+
+using namespace std;
+
+int arr[16] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+int nrProcs = 8;
+int totalSum = 0;
+
+int main(int argc, char *argv[]) {
+
+	int ID;
+	int Data = 0;
+	int ReducedData = 0;
+
+	MPI_Init(&argc, &argv);
+	MPI_Comm_rank(MPI_COMM_WORLD, &ID);
+
+	MPI_Status status;
+
+	if (ID == 0)
+	{
+		for (int i = 1; i <= 7; i++)
+		{
+			//Send data to slave
+			int nr1 = arr[i];
+			MPI_Send(&nr1, 1, MPI_INT, i, 1, MPI_COMM_WORLD);
+
+			int nr2 = arr[i + nrProcs];
+			MPI_Send(&nr2, 1, MPI_INT, i, 2, MPI_COMM_WORLD);
+		}
+
+		MPI_Status mStat;
+
+		for (int i = 1; i <= 7; i++)
+		{
+			int receivedSum;
+			MPI_Recv(&receivedSum, 1, MPI_INT, i, 1, MPI_COMM_WORLD, &mStat);
+			totalSum += receivedSum;
+		}
+
+		cout << totalSum;
+	}
+	else
+	{
+		for (int i = 0; i <= 7; i++) {
+			if (i == ID)
+			{
+				int nr1, nr2;
+				MPI_Recv(&nr1, 1, MPI_INT, 0, 1, MPI_COMM_WORLD, &status);
+				MPI_Recv(&nr2, 1, MPI_INT, 0, 2, MPI_COMM_WORLD, &status);
+
+				int sum = nr1 + nr2;
+
+				cout << "Slave is " << ID << " have numbers " << nr1 << " " << nr2 << endl;
+				MPI_Send(&sum, 1, MPI_INT, 0, 1, MPI_COMM_WORLD);
+			}
+		}
+	}
+
+	MPI_Finalize();
+
+
+	return 0;
+}
