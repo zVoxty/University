@@ -1,0 +1,55 @@
+#include<iostream>
+#include <mpi.h>
+#include <windows.h>
+#include <stdlib.h>
+#include <time.h>
+
+using namespace std;
+
+int main(int argc, char *argv[]) {
+
+	int ID;
+	int generatedNumber;
+	int receivedNumber;
+
+	int masterID = 9999;
+
+	MPI_Init(&argc, &argv);
+	MPI_Comm_rank(MPI_COMM_WORLD, &ID);
+
+	srand(time(NULL) * ID);
+
+	MPI_Status status;
+
+	generatedNumber = rand() % 100 + 1;
+	
+	if (ID == 0)
+	{
+		masterID = 0;
+		for (int i = 1; i <= 7; i++)
+		{
+			MPI_Recv(&receivedNumber, 1, MPI_INT, i, 0, MPI_COMM_WORLD, &status);
+			if (receivedNumber > generatedNumber)
+			{
+				if (receivedNumber == generatedNumber)
+				{
+					if (i > masterID)
+					{
+						generatedNumber = receivedNumber;
+						masterID = i;
+					}
+				}
+			}
+		}
+
+		cout << "Master is " << masterID << " with number " << generatedNumber << endl;
+	}
+	else
+	{
+		MPI_Send(&generatedNumber, 1, MPI_INT, 0, 0, MPI_COMM_WORLD);
+	}
+
+	MPI_Finalize();
+
+	return 0;
+}
