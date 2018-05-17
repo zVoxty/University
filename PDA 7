@@ -17,7 +17,7 @@ int D[N] = {
 };
 
 
-
+//Kerner calculate dist
 __global__ void CalcDist(int* D, int k)
 {
 	int i = threadIdx.x;
@@ -29,8 +29,11 @@ __global__ void CalcDist(int* D, int k)
 
 int main()
 {
-	int numBlocks = 1;
+	
 	int k;	
+
+	// Kernel invocation with one block of N * N * 1 threads
+	int numBlocks = 1;
 	dim3 threadsPerBlock(N, N);
 	
 	int* d_D;
