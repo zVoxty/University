@@ -30,19 +30,24 @@ int main(int argc, char** argv)
 		for (int j = 0; j < N; j++)
 			if (graf[rank][k] + graf[k][j] < graf[rank][j])
 				graf[rank][j] = graf[rank][k] + graf[k][j];
+				
+		//MPI_Send(&graf[rank], 1, MPI_INT, 0, 0, MPI_COMM_WORLD);
+
 		//Gathers data from all tasks and distribute the combined data to all tasks
 		MPI_Allgather(graf[rank], N, MPI_INT, graf, N, MPI_INT, MPI_COMM_WORLD);
 	}
 
-	MPI_Barrier(MPI_COMM_WORLD); //Blocks the caller until all processes in the communicator have called it;
-
-	if (rank == 0) // 0 rank print the graph
-		for (int i = 0; i < N; i++)
-		{
+	 // 0 rank print the graph
+	if (rank == 0){
+		//for(int i = 0; i <= N; i++){
+			//MPI_Recv(&graf[rank], 1, MPI_INT, i, 0, MPI_COMM_WORLD);
+		//}
+		for (int i = 0; i < N; i++){
 			for (int j = 0; j < N; j++)
 				cout << graf[i][j] << " ";
 			cout << '\n';
 		}
+	}
 
 	MPI_Finalize();
 	return 0;
